@@ -1,16 +1,19 @@
 "use client";
 
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { BsArrowRight, BsLinkedin } from 'react-icons/bs';
+import { BsLinkedin } from 'react-icons/bs';
 import { HiDownload } from 'react-icons/hi';
 import { FaGithubSquare } from 'react-icons/fa';
+import { useSectionInView } from '@/lib/hooks';
 
 export default function Intro() {
+  const { ref } = useSectionInView("Home", 0.5)
+  const faceImg = require('public/faceImg.png');
+  
   return (
-    <section className='mb-28 max-w-[50rem] text-center sm:mb-0'>
+    <section ref={ref} id="home" className='mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]'>
       <div className='flex items-center justify-center'>
         <div className='relative'>
           <motion.div
@@ -22,7 +25,7 @@ export default function Intro() {
             }}
           >
             <Image 
-              src='https://media.licdn.com/dms/image/D5603AQFOMopF2JVMJg/profile-displayphoto-shrink_800_800/0/1693996109582?e=1700092800&v=beta&t=7tD33BQj4OqXnzKvmcyb6efVcsAbGv5I26xmS8NYGkY' 
+              src={faceImg} 
               alt='Nethan Portrait' 
               width='192'
               height='192'
@@ -67,12 +70,12 @@ export default function Intro() {
         }}
       >
         <a
-          className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
+          className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 hover:underline active:scale-105 transition"
           href="/CV_Nethaneel_Patricio_Linggar.pdf"
           download
         >
           Download CV{" "}
-          <HiDownload className="opacity-70 pb-0.5 group-hover:translate-y-0.5 transition" />
+          <HiDownload className="opacity-70 pb-0.2 group-hover:translate-y-0.5 transition" />
         </a>
         <a
           className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer border-black/10"
