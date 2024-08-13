@@ -2,8 +2,10 @@ import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
 import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
-import MSCImg from "public/MSC.png";
+import { FaLaptop } from "react-icons/fa6";
+import FCRImg from "public/FCR.jpg";
 import ERPImg from "public/ERP.png";
+import MSCImg from "public/MSC.png";
 
 export const links = [
   {
@@ -30,36 +32,59 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Graduated bootcamp",
-    location: "Miami, FL",
+    title: "Graduated from College",
+    location: "Sepuluh Nopember Institute of Technology",
     description:
-      "I graduated after 6 months of studying. I immediately found a job as a front-end developer.",
+      "I graduated cum laude after 4 years of studying Computer Science with a 3.67 GPA. Final thesis is a Facial Recognition Attendance System.",
     icon: React.createElement(LuGraduationCap),
-    date: "2019",
+    date: "2020 - 2024",
   },
   {
-    title: "Front-End Developer",
-    location: "Orlando, FL",
+    title: "Junior Software Developer",
+    location: "PT Bispro Consulting",
     description:
-      "I worked as a front-end developer for 2 years in 1 job and 1 year in another job. I also upskilled to the full stack.",
+      "Hybrid contract for 3 months as a Junior Software Developer. Worked with M-Files, a document management platform.",
     icon: React.createElement(CgWorkAlt),
-    date: "2019 - 2021",
+    date: "Dec 2023 - Feb 2024",
   },
   {
-    title: "Full-Stack Developer",
-    location: "Houston, TX",
+    title: "Frontend Developer",
+    location: "Directorate of Technology and Information Systems Development",
     description:
-      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
+      "On-site contract for 4 months as a Frontend Developer. Worked on myITS StudentConnect.",
     icon: React.createElement(FaReact),
-    date: "2021 - present",
+    date: "Sep 2023 - Dec 2023",
+  },
+  {
+    title: "Teaching Factory Sustainable Talent Nurturing Program",
+    location: "Digital Business and Technology Telkom Indonesia",
+    description:
+      "Online independent study program for 4 months, took the Software Architecture course.",
+    icon: React.createElement(FaLaptop),
+    date: "Sep 2023 - Dec 2023",
+  },
+  {
+    title: "Forecasting for an Enterprise Resource Planning (ERP)",
+    location: "Digital Business and Technology Telkom Indonesia",
+    description:
+      "Developed an inventory forecasting module integrated with an ERP solution utilizing machine learning. Team lead by Prof. Drs. Ec. Ir. Riyanarto Sarno, M.Sc Ph.D.",
+    icon: React.createElement(FaLaptop),
+    date: "Jan 2023 - Jul 2023",
   },
 ] as const;
 
 export const projectsData = [
   {
+    title: "Face Recognition Attendance System",
+    description:
+    "My final thesis which is to create an attendance system using facial recognition. Includes a backend, Android, and camera app.",
+    tags: [ "Python", "Express.js", "JavaScript", "MySQL"],
+    imageUrl: FCRImg,
+  },
+  {
     title: "myITS StudentConnect",
     description:
-    "A service that manages student extracurricular credit. Merged it's logic with an existing in-campus organization tracking service.",
+    "Implemented and deployed a service that manages student extracurricular credit. Merged it's logic with an existing in-campus organization tracking service.",
     tags: [ "Next.js", "Tailwind", "TypeScript", "Golang"],
     imageUrl: MSCImg,
   },
