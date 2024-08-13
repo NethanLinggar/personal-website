@@ -23,18 +23,21 @@ export default function Contact() {
       <motion.h1
         className="mb-5 px-4 text-2xl font-medium !leading-[1.5]"
         initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }} // Animate to this state when it comes into view
+        transition={{ duration: 0.5 }} // Transition duration
+        viewport={{
+          once: true
+        }}
       >
         <span className="font-semibold">You could reach me out through here!</span>
       </motion.h1>
 
       <motion.div
         className='flex flex-row items-center justify-center gap-3 px-4 text-lg font-medium relative'
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0}}
-        transition={{
-          delay: 0.1
-        }}
+        initial={{ opacity: 0, y: 100 }} // Initial state before it comes into view
+        whileInView={{ opacity: 1, y: 0 }} // Animate to this state when it comes into view
+        transition={{ delay: 0.1, duration: 0.5 }} // Transition delay and duration
+        viewport={{ once: true }} // Animate only once
       >
         <div className="relative">
           <a

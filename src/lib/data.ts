@@ -78,21 +78,21 @@ export const projectsData = [
     title: "Face Recognition Attendance System",
     description:
     "My final thesis which is to create an attendance system using facial recognition. Includes a backend, Android, and camera app.",
-    tags: [ "Python", "Express.js", "JavaScript", "MySQL"],
+    tags: ["Deep Learning", "Python", "Express.js", "MySQL", "Android"],
     imageUrl: FCRImg,
   },
   {
     title: "myITS StudentConnect",
     description:
     "Implemented and deployed a service that manages student extracurricular credit. Merged it's logic with an existing in-campus organization tracking service.",
-    tags: [ "Next.js", "Tailwind", "TypeScript", "Golang"],
+    tags: [ "Next.js", "Tailwind", "Golang", "Agile Method"],
     imageUrl: MSCImg,
   },
   {
     title: "ERP (Forecasting Module)",
     description:
       "Worked as a full-stack developer on this project. Users can instantly make demand forecasts based on their inventory.",
-    tags: ["Next.js", "Express.js", "MySQL",  "Python"],
+    tags: ["Next.js", "Express.js", "MySQL",  "Python", "Machine Learning"],
     imageUrl: ERPImg,
   },
 ] as const;
@@ -102,6 +102,7 @@ export const skillsData = [
   "CSS",
   "JavaScript",
   "TypeScript",
+  "Java",
   "SQL",
   "Bash/ Shell Scripting",
   "Python",
@@ -109,9 +110,12 @@ export const skillsData = [
   "Next.js",
   "Node.js",
   "Express.js",
+  "Golang",
+  "Android Studio",
   "MySQL",
   "PostgreSQL",
   "Git",
+  "Docker",
   "Linux/ Unix Systems",
   "JMeter",
   "Postman",
