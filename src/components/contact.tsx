@@ -25,7 +25,7 @@ export default function Contact() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <span className="font-semibold">You could reach me out through here!</span>
+        <span className="font-semibold dark:text-white">You could reach me out through here!</span>
       </motion.h1>
 
       <motion.div
@@ -47,7 +47,7 @@ export default function Contact() {
           <AnimatePresence>
             {showTooltip && (
               <motion.div
-                className="absolute bottom-14 -left-1/2 mb-2 center bg-gray-900 text-white text-sm py-1 px-2 rounded-md w-max box-border"
+                className="absolute bottom-14 -left-1/2 mb-2 center bg-gray-900 text-white text-sm py-1 px-2 rounded-md w-max box-border dark:bg-gray-950"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.5 }}

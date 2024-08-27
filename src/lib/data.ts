@@ -65,7 +65,7 @@ export const experiencesData = [
   },
   {
     title: "Forecasting for an Enterprise Resource Planning (ERP)",
-    location: "Digital Business and Technology Telkom Indonesia",
+    location: "Information Intelligent Management Laboratory ",
     description:
       "Developed an inventory forecasting module integrated with an ERP solution utilizing machine learning. Team lead by Prof. Drs. Ec. Ir. Riyanarto Sarno, M.Sc Ph.D.",
     icon: React.createElement(FaLaptop),
@@ -98,10 +98,9 @@ export const projectsData = [
 ] as const;
 
 export const skillsData = [
-  "HTML",
-  "CSS",
+  "C++",
+  "Java",
   "JavaScript",
-  "TypeScript",
   "SQL",
   "Bash/ Shell Scripting",
   "Python",
@@ -109,17 +108,7 @@ export const skillsData = [
   "Next.js",
   "Node.js",
   "Express.js",
-  "MySQL",
-  "PostgreSQL",
-  "Git",
-  "Linux/ Unix Systems",
-  "JMeter",
-  "Postman",
   "Agile Methods (Scrum)",
   "Project Management (JIRA, Trello)",
   "Tensorflow",
-  "Keras",
-  "PyTorch",
-  "Pandas",
-  "NumPy",
 ] as const;
