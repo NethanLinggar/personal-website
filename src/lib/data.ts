@@ -32,6 +32,14 @@ export const links = [
 
 export const experiencesData = [
   {
+    title: "Analyst Developer",
+    location: "PT Phoenix Solusi Indonesia",
+    description:
+      "Full time at said telematics provider company. Worked with GPS systems, such as Wialon and Flespi, and maintain it for clients",
+    icon: React.createElement(LuGraduationCap),
+    date: "Oct 2024 - Now",
+  },
+  {
     title: "Graduated from College",
     location: "Sepuluh Nopember Institute of Technology",
     description:
@@ -43,7 +51,7 @@ export const experiencesData = [
     title: "Junior Software Developer",
     location: "PT Bispro Consulting",
     description:
-      "Hybrid contract for 3 months as a Junior Software Developer. Worked with M-Files, a document management platform.",
+      "Hybrid contract for 3 months at said consulting firm. Worked with M-Files, a document management platform.",
     icon: React.createElement(CgWorkAlt),
     date: "Dec 2023 - Feb 2024",
   },
@@ -55,44 +63,28 @@ export const experiencesData = [
     icon: React.createElement(FaReact),
     date: "Sep 2023 - Dec 2023",
   },
-  {
-    title: "Teaching Factory Sustainable Talent Nurturing Program",
-    location: "Digital Business and Technology Telkom Indonesia",
-    description:
-      "Online independent study program for 4 months, took the Software Architecture course.",
-    icon: React.createElement(FaLaptop),
-    date: "Sep 2023 - Dec 2023",
-  },
-  {
-    title: "Forecasting for an Enterprise Resource Planning (ERP)",
-    location: "Information Intelligent Management Laboratory ",
-    description:
-      "Developed an inventory forecasting module integrated with an ERP solution utilizing machine learning. Team lead by Prof. Drs. Ec. Ir. Riyanarto Sarno, M.Sc Ph.D.",
-    icon: React.createElement(FaLaptop),
-    date: "Jan 2023 - Jul 2023",
-  },
 ] as const;
 
 export const projectsData = [
   {
     title: "Face Recognition Attendance System",
     description:
-    "My final thesis which is to create an attendance system using facial recognition. Includes a backend, Android, and camera app.",
-    tags: [ "Python", "Express.js", "JavaScript", "MySQL"],
+      "My final thesis which is to create an attendance system using facial recognition. Includes a backend, Android, and camera app.",
+    tags: ["Python", "Express.js", "JavaScript", "MySQL"],
     imageUrl: FCRImg,
   },
   {
     title: "myITS StudentConnect",
     description:
-    "Implemented and deployed a service that manages student extracurricular credit. Merged it's logic with an existing in-campus organization tracking service.",
-    tags: [ "Next.js", "Tailwind", "TypeScript", "Golang"],
+      "Made a student extracurricular credit manager. Merged it with an already existing in-campus organization tracking service.",
+    tags: ["Next.js", "Tailwind", "TypeScript", "Golang"],
     imageUrl: MSCImg,
   },
   {
     title: "ERP (Forecasting Module)",
     description:
       "Worked as a full-stack developer on this project. Users can instantly make demand forecasts based on their inventory.",
-    tags: ["Next.js", "Express.js", "MySQL",  "Python"],
+    tags: ["Next.js", "Express.js", "MySQL", "Python"],
     imageUrl: ERPImg,
   },
 ] as const;
@@ -100,14 +92,18 @@ export const projectsData = [
 export const skillsData = [
   "C++",
   "Java",
+  "PHP",
   "JavaScript",
+  "Kotlin",
   "SQL",
   "Bash/ Shell Scripting",
   "Python",
+  "Laravel",
   "React",
   "Next.js",
   "Node.js",
   "Express.js",
+  "Android Studio",
   "Agile Methods (Scrum)",
   "Project Management (JIRA, Trello)",
   "Tensorflow",

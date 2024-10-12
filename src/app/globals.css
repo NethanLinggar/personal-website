@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 html {
-  --line-color: #e5e7eb;
+  --line-color: rgba(10, 10, 10, 0.4);
 }
 
 html.dark {
-  --line-color: rgba(255, 255, 255, 0.2);
+  --line-color: rgba(232, 235, 234, 0.1);
 }

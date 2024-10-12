@@ -17,7 +17,7 @@ export default function Contact() {
       console.error("Failed to copy email: ", err);
     });
   };
-  
+
   return (
     <section className='mb-32 max-w-[50rem] text-center scroll-mt-[100rem]'>
       <motion.h1
@@ -31,14 +31,14 @@ export default function Contact() {
       <motion.div
         className='flex flex-row items-center justify-center gap-3 px-4 text-lg font-medium relative'
         initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0}}
+        animate={{ opacity: 1, y: 0 }}
         transition={{
           delay: 0.1
         }}
       >
         <div className="relative">
           <a
-            className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer border-black/10 dark:bg-white/10 dark:text-white/60"
+            className="bg-dark-gray/50 p-4 text-white hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer dark:bg-white/10 dark:text-white/80"
             target="_blank"
             onClick={handleCopyEmail}
           >
@@ -47,7 +47,7 @@ export default function Contact() {
           <AnimatePresence>
             {showTooltip && (
               <motion.div
-                className="absolute bottom-14 -left-1/2 mb-2 center bg-gray-900 text-white text-sm py-1 px-2 rounded-md w-max box-border dark:bg-gray-950"
+                className="absolute bottom-14 -left-1/2 mb-2 center bg-black/80 text-white text-sm py-1 px-2 rounded-md w-max box-border dark:bg-white/80 dark:text-black"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.5 }}
@@ -59,21 +59,21 @@ export default function Contact() {
           </AnimatePresence>
         </div>
         <a
-          className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer border-black/10 dark:bg-white/10 dark:text-white/60"
+          className="bg-dark-gray/50 p-4 text-white hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer dark:bg-white/10 dark:text-white/80"
           href="https://www.linkedin.com/in/nethaneel-patricio-linggar/"
           target="_blank"
         >
           <BsLinkedin />
         </a>
         <a
-          className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer border-black/10 dark:bg-white/10 dark:text-white/60"
+          className="bg-dark-gray/50 p-4 text-white hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer dark:bg-white/10 dark:text-white/80"
           href="https://github.com/NethanLinggar"
           target="_blank"
         >
           <FaGithubSquare />
         </a>
         <a
-          className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer border-black/10 dark:bg-white/10 dark:text-white/60"
+          className="bg-dark-gray/50 p-4 text-white hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer dark:bg-white/10 dark:text-white/80"
           href="https://www.instagram.com/nethanpat/"
           target="_blank"
         >
