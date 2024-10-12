@@ -13,8 +13,7 @@ import { BsMoonFill, BsSunFill } from 'react-icons/bs'
 export default function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
   const { theme, toggleTheme } = useTheme()
-  const blackImg = require('public/blackFill.png');
-  const whiteImg = require('public/whiteFill.png');
+  const whiteImg = require('public/whiteFill.svg');
 
   return <header className='z-[999] relative'>
     <motion.div className='fixed bottom-9 left-1/2 h-[3.25rem] w-[24rem] rounded-full bg-[#151515] bg-opacity-60 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem] sm:top-6 sm:rounded-full dark:bg-[#2B2C28] dark:bg-opacity-50'

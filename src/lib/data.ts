@@ -57,7 +57,7 @@ export const experiencesData = [
   },
   {
     title: "Frontend Developer",
-    location: "Directorate of Technology and Information Systems Development",
+    location: "Direktorat Pengembangan Teknologi dan Sistem Informasi (DPTSI) - ITS",
     description:
       "On-site contract for 4 months as a Frontend Developer. Worked on myITS StudentConnect.",
     icon: React.createElement(FaReact),
