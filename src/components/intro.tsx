@@ -2,40 +2,127 @@
 
 import Image from 'next/image';
 import React from 'react';
+import { Source_Code_Pro } from 'next/font/google';
 import { motion } from 'framer-motion';
 import { BsLinkedin } from 'react-icons/bs';
 import { HiDownload } from 'react-icons/hi';
 import { FaGithubSquare } from 'react-icons/fa';
 import { useSectionInView } from '@/lib/hooks';
+import TypeIt from 'typeit-react';
+
+const code = Source_Code_Pro({ subsets: ['latin'] });
 
 export default function Intro() {
-  const { ref } = useSectionInView("Home", 0.5)
-  const faceImg = require('public/faceImg.png');
+  const { ref } = useSectionInView("Home", 0.5);
+  const monitorBig = require('public/monitorBig.png');
+  const monitorSmall = require('public/monitorSmall.png');
+  const name = require('public/name.png');
+  const blackOutline = require('public/blackOutline.png');
 
   return (
-    <section ref={ref} id="home" className='mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]'>
-      <div className='flex items-center justify-center'>
-        <div className='relative'>
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              type: "tween",
-              duration: 0.2,
-            }}
-          >
-            <Image
-              src={faceImg}
-              alt='Nethan Portrait'
-              width='192'
-              height='192'
-              quality='95'
-              priority={true}
-              className='h-24 w-24 rounded-full object-cover border-[0.35rem] border-white shadow-xl'
-            />
-          </motion.div>
+    <section ref={ref} id="home" className="mb-28 max-w-[45rem] text-center sm:mb-0 scroll-mt-[100rem]">
+      <div className="flex items-center justify-center mb-12">
+        <div className="relative">
+          <div className="mt-3 relative">
+            {/* Monitor */}
+            <motion.div
+              className="relative z-0"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{
+                type: "tween",
+                duration: 0.2,
+              }}
+            >
+              <Image
+                src={monitorBig}
+                alt="Monitor"
+                quality="80"
+                priority={true}
+                className="relative hidden sm:block"
+              />
+              <Image
+                src={monitorSmall}
+                alt="Monitor"
+                quality="80"
+                priority={true}
+                className="relative block sm:hidden"
+              />
 
-          <motion.span className='absolute text-2xl bottom-0 right-0'
+              {/* Inside Monitor */}
+              <div className={`${code.className} absolute inset-0 top-[-27%] flex justify-between items-center overflow-hidden px-[5%]`}>
+                <motion.div
+                  className="flex justify-between items-center space-x-8 w-full"
+                  initial={{ opacity: 0, y: 100 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  {/* Logo Image */}
+                  <div className="w-[200px] text-right hidden sm:block">
+                      <Image
+                        src={blackOutline}
+                        alt="Logo Image"
+                        width={200}
+                        height={200}
+                        
+                      />
+                    <p className="text-xs sm:text-sm font-medium !leading-[1.5] sm:!leading-[2.2] dark:text-black">
+                      <br />
+                      <span>based in Jakarta,</span>
+                      <br />
+                      <span>still a junior,</span>
+                      <br />
+                      <span>very passionate</span>
+                    </p>
+                  </div>
+
+                  {/* Heading */}
+                  <div className="text-left w-full text-lg sm:text-[1.8rem] font-medium !leading-[1.2] sm:!leading-[1.4] dark:text-black">
+                    <TypeIt
+                      getBeforeInit={(instance) => {
+                        instance
+                          .options({ speed: 60, lifeLike: false })
+                          .type("a <strong>software enginer</strong>")
+                          .pause(100)
+                          .delete(1)
+                          .type("<strong>er</strong> ")
+                          .pause(700)
+                          .type("w/ a small interest in ")
+                          .pause(400)
+                          .type(".")
+                          .pause(400)
+                          .type(".")
+                          .pause(400)
+                          .type(".")
+                          .pause(400)
+                          .delete(3)
+                          .type("<em>machine learning</em>.")
+                          .pause(1500)
+                          .break()
+                          .break()
+                          .type("also ")
+                          .pause(500)
+                          .type("a huge <u>geek</u>")
+                          .pause(800)
+                          .delete(4)
+                          .type("<u>nerd</u>")
+                          .pause(1000)
+                          .type(" & have greate")
+                          .pause(100)
+                          .delete(1)
+                          .type(" taste in <u>design</u>")
+                          .pause(1000)
+                          .type(".")
+
+                        return instance;
+                      }}
+                    />
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+          {/* Nametag */}
+          <motion.div className="absolute z-20 top-[-3rem] sm:top-[-3.5rem] left-[-1rem]"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
@@ -45,28 +132,24 @@ export default function Intro() {
               duration: 0.7,
             }}
           >
-            👋
-          </motion.span>
+            <Image
+              src={name}
+              alt="Nametag"
+              quality="80"
+              priority={true}
+              className="w-[20vw] min-w-[120px] max-w-[200px]"
+            />
+          </motion.div>
         </div>
       </div>
 
-      <motion.h1
-        className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl dark:text-white"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-      >
-        <span className="font-bold">Hey there, I'm Nethan!</span> A{" "}
-        <span className="font-bold">computer science fresh graduate</span> that's interested in {" "}
-        <span className="italic">Software Engineering</span> and <span className="italic">Machine Learning</span>. Welcome to my{" "}
-        <span className="underline">website</span>!
-      </motion.h1>
-
+      {/* Buttons */}
       <motion.div
-        className='flex flex-col sm:flex-row items-center justify-center gap-3 px-4 text-lg font-medium'
+        className="flex flex-col sm:flex-row items-center justify-center gap-3 px-4 text-lg font-medium"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
-          delay: 0.1
+          delay: 0.1,
         }}
       >
         <a
@@ -93,5 +176,5 @@ export default function Intro() {
         </a>
       </motion.div>
     </section>
-  )
+  );
 }
