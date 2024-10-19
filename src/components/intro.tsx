@@ -9,16 +9,16 @@ import { HiDownload } from 'react-icons/hi';
 import { FaGithubSquare } from 'react-icons/fa';
 import { useSectionInView } from '@/lib/hooks';
 import TypeIt from 'typeit-react';
+import monitorBig from '/public/monitorBig.png';
+import monitorSmall from '/public/monitorSmall.png';
+import name from '/public/name.png';
+import blackOutline from '/public/blackOutline.png';
 
 const code = Source_Code_Pro({ subsets: ['latin'] });
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
-  const monitorBig = require('public/monitorBig.png');
-  const monitorSmall = require('public/monitorSmall.png');
-  const name = require('public/name.png');
-  const blackOutline = require('public/blackOutline.png');
-
+  
   return (
     <section ref={ref} id="home" className="mb-28 max-w-[45rem] text-center sm:mb-0 scroll-mt-[100rem]">
       <div className="flex items-center justify-center mb-12">
@@ -63,7 +63,6 @@ export default function Intro() {
                         alt="Logo Image"
                         width={200}
                         height={200}
-                        
                       />
                     <p className="text-xs sm:text-sm font-medium !leading-[1.5] sm:!leading-[2.2] dark:text-black">
                       <br />
@@ -80,37 +79,37 @@ export default function Intro() {
                     <TypeIt
                       getBeforeInit={(instance) => {
                         instance
-                          .options({ speed: 60, lifeLike: false })
+                          .options({ speed: 40, lifeLike: true })
                           .type("a <strong>software enginer</strong>")
-                          .pause(100)
+                          .pause(50)
                           .delete(1)
                           .type("<strong>er</strong> ")
-                          .pause(700)
+                          .pause(350)
                           .type("w/ a small interest in ")
-                          .pause(400)
+                          .pause(200)
                           .type(".")
-                          .pause(400)
+                          .pause(200)
                           .type(".")
-                          .pause(400)
+                          .pause(200)
                           .type(".")
-                          .pause(400)
+                          .pause(200)
                           .delete(3)
                           .type("<em>machine learning</em>.")
-                          .pause(1500)
+                          .pause(750)
                           .break()
                           .break()
                           .type("also ")
-                          .pause(500)
+                          .pause(250)
                           .type("a huge <u>geek</u>")
-                          .pause(800)
+                          .pause(400)
                           .delete(4)
                           .type("<u>nerd</u>")
-                          .pause(1000)
+                          .pause(500)
                           .type(" & have greate")
-                          .pause(100)
+                          .pause(50)
                           .delete(1)
                           .type(" taste in <u>design</u>")
-                          .pause(1000)
+                          .pause(500)
                           .type(".")
 
                         return instance;

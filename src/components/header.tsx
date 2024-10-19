@@ -9,11 +9,11 @@ import clsx from 'clsx';
 import { useActiveSectionContext } from '@/context/active-section-context';
 import { useTheme } from '@/context/theme-context';
 import { BsMoonFill, BsSunFill } from 'react-icons/bs'
+import whiteImg from '/public/whiteFill.svg'
 
 export default function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
   const { theme, toggleTheme } = useTheme()
-  const whiteImg = require('public/whiteFill.svg');
 
   return <header className='z-[999] relative'>
     <motion.div 
