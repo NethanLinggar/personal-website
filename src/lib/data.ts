@@ -4,8 +4,8 @@ import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 import { FaLaptop } from "react-icons/fa6";
 import FCRImg from "/public/FCR.jpg";
-import ERPImg from "/public/ERP.png";
-import MSCImg from "/public/MSC.png";
+import ERPImg from "/public/ERP.jpg";
+import MSCImg from "/public/MSC.jpg";
 
 export const links = [
   {

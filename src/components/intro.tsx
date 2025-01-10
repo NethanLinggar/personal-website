@@ -44,7 +44,7 @@ export default function Intro() {
               <Image
                 src={monitorSmall}
                 alt="Monitor"
-                quality="80"
+                quality="70"
                 priority={true}
                 className="relative block sm:hidden"
               />
@@ -79,37 +79,37 @@ export default function Intro() {
                     <TypeIt
                       getBeforeInit={(instance) => {
                         instance
-                          .options({ speed: 40, lifeLike: true })
+                          .options({ speed: 20, lifeLike: true })
                           .type("a <strong>software enginer</strong>")
-                          .pause(50)
+                          .pause(25)
                           .delete(1)
                           .type("<strong>er</strong> ")
-                          .pause(350)
+                          .pause(150)
                           .type("w/ a small interest in ")
-                          .pause(200)
+                          .pause(100)
                           .type(".")
-                          .pause(200)
+                          .pause(100)
                           .type(".")
-                          .pause(200)
+                          .pause(100)
                           .type(".")
-                          .pause(200)
+                          .pause(100)
                           .delete(3)
                           .type("<em>machine learning</em>.")
-                          .pause(750)
+                          .pause(350)
                           .break()
                           .break()
                           .type("also ")
-                          .pause(250)
+                          .pause(150)
                           .type("a huge <u>geek</u>")
-                          .pause(400)
+                          .pause(200)
                           .delete(4)
                           .type("<u>nerd</u>")
-                          .pause(500)
+                          .pause(250)
                           .type(" & have greate")
-                          .pause(50)
+                          .pause(25)
                           .delete(1)
                           .type(" taste in <u>design</u>")
-                          .pause(500)
+                          .pause(250)
                           .type(".")
 
                         return instance;
