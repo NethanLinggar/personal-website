@@ -13,6 +13,8 @@ const config: Config = {
       'light-gray': '#2B2C28',
       'dark-gray': '#151515',
       'black': '#0A0A0A',
+      'steam-blue': '#66C0F4',
+      'spotify-green': '#1DB954'
     },
     extend: {
       backgroundImage: {

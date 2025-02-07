@@ -18,7 +18,7 @@ const code = Source_Code_Pro({ subsets: ['latin'] });
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
-  
+
   return (
     <section ref={ref} id="home" className="mb-28 max-w-[45rem] text-center sm:mb-0 scroll-mt-[100rem]">
       <div className="flex items-center justify-center mb-12">
@@ -51,19 +51,15 @@ export default function Intro() {
 
               {/* Inside Monitor */}
               <div className={`${code.className} absolute inset-0 top-[-27%] flex justify-between items-center overflow-hidden px-[5%]`}>
-                <motion.div
-                  className="flex justify-between items-center space-x-8 w-full"
-                  initial={{ opacity: 0, y: 100 }}
-                  animate={{ opacity: 1, y: 0 }}
-                >
+                <div className="flex justify-between items-center space-x-8 w-full">
                   {/* Logo Image */}
                   <div className="w-[200px] text-right hidden sm:block">
-                      <Image
-                        src={blackOutline}
-                        alt="Logo Image"
-                        width={200}
-                        height={200}
-                      />
+                    <Image
+                      src={blackOutline}
+                      alt="Logo Image"
+                      width={200}
+                      height={200}
+                    />
                     <p className="text-xs sm:text-sm font-medium !leading-[1.5] sm:!leading-[2.2] dark:text-black">
                       <br />
                       <span>based in Jakarta,</span>
@@ -75,11 +71,17 @@ export default function Intro() {
                   </div>
 
                   {/* Heading */}
-                  <div className="text-left w-full text-lg sm:text-[1.8rem] font-medium !leading-[1.2] sm:!leading-[1.4] dark:text-black">
+                  <div className="text-left w-full text-lg sm:text-[1.8rem] font-medium !leading-[1.2] sm:!leading-[1.4] dark:text-black block sm:hidden">
+                    <p>a <strong>software engineer</strong> w/ a small interest in <em>machine learning</em>.</p>
+                    <br />
+                    <p>also a huge <u>nerd</u> & have great taste in <u>design</u>.</p>
+                  </div>
+                  <div className="text-left w-full text-lg sm:text-[1.8rem] font-medium !leading-[1.2] sm:!leading-[1.4] dark:text-black hidden sm:block">
                     <TypeIt
                       getBeforeInit={(instance) => {
                         instance
-                          .options({ speed: 20, lifeLike: true })
+                          .options({ speed: 10, lifeLike: true })
+                          .pause(400)
                           .type("a <strong>software enginer</strong>")
                           .pause(25)
                           .delete(1)
@@ -116,7 +118,7 @@ export default function Intro() {
                       }}
                     />
                   </div>
-                </motion.div>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -153,8 +155,8 @@ export default function Intro() {
       >
         <a
           className="group bg-black text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 hover:underline active:scale-105 transition"
-          href="/CV_Nethaneel_Patricio_Linggar.pdf"
-          download
+          href="https://drive.google.com/file/d/1HBvUFSV8CyuP3FJXbCGreTFZYwP1qD7j/view?usp=sharing"
+          target="_blank"
         >
           Download CV{" "}
           <HiDownload className="opacity-70 pb-0.2 group-hover:translate-y-0.5 transition" />
