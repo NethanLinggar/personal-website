@@ -14,7 +14,8 @@ const config: Config = {
       'dark-gray': '#151515',
       'black': '#0A0A0A',
       'steam-blue': '#66C0F4',
-      'spotify-green': '#1DB954'
+      'spotify-green': '#1DB954',
+      'letterboxd-orange': '#F27405'
     },
     extend: {
       backgroundImage: {

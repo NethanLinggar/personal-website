@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hooks";
 import EmbedComponent from "./embed"; // Import here
 
-type EmbedType = "steam" | "spotify" | null;
+type EmbedType = "steam" | "spotify" | "letterboxd" | null;
 
 export default function About() {
   const { ref } = useSectionInView("About");
@@ -73,7 +73,17 @@ export default function About() {
         >
           video games
         </span>
-        , watching movies or TV series, listening to{" "}
+        , watching{" "}
+        <span
+          className={`cursor-pointer underline transition-colors duration-300 ${activeEmbed === "letterboxd" ? "text-letterboxd-orange animate-color-change" : "hover:text-letterboxd-orange text-red"
+            }`}
+          onMouseEnter={() => handleMouseEnter("letterboxd")}
+          onMouseLeave={handleMouseLeave}
+          onClick={() => handleClick("letterboxd")}
+        >
+          movies 
+        </span>
+        {" "}or TV series, listening to{" "}
         <span
           className={`cursor-pointer underline transition-colors duration-300 ${activeEmbed === "spotify" ? "text-spotify-green animate-color-change" : "hover:text-spotify-green text-red"
             }`}
@@ -88,6 +98,7 @@ export default function About() {
 
       <EmbedComponent type="steam" isVisible={activeEmbed === "steam"} onClose={handleClose} />
       <EmbedComponent type="spotify" isVisible={activeEmbed === "spotify"} onClose={handleClose} />
+      <EmbedComponent type="letterboxd" isVisible={activeEmbed === "letterboxd"} onClose={handleClose} />
 
     </motion.section>
   );
