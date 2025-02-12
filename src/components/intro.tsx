@@ -3,16 +3,16 @@
 import Image from 'next/image';
 import React from 'react';
 import { Source_Code_Pro } from 'next/font/google';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { BsLinkedin } from 'react-icons/bs';
 import { HiDownload } from 'react-icons/hi';
 import { FaGithubSquare } from 'react-icons/fa';
 import { useSectionInView } from '@/lib/hooks';
 import TypeIt from 'typeit-react';
-import monitorBig from '/public/monitorBig.png';
-import monitorSmall from '/public/monitorSmall.png';
-import name from '/public/name.png';
-import blackOutline from '/public/blackOutline.png';
+import monitorBig from '../../public/monitorBig.png';
+import monitorSmall from '../../public/monitorSmall.png';
+import name from '../../public/name.png';
+import blackOutline from '../../public/blackOutline.png';
 
 const code = Source_Code_Pro({ subsets: ['latin'] });
 

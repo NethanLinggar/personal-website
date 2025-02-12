@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import SectionHeading from "./section-heading";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useSectionInView } from "@/lib/hooks";
 import EmbedComponent from "./embed"; // Import here
 

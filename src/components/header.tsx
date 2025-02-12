@@ -2,21 +2,21 @@
 
 import Image from 'next/image';
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { links } from "@/lib/data";
 import Link from 'next/link';
 import clsx from 'clsx';
 import { useActiveSectionContext } from '@/context/active-section-context';
 import { useTheme } from '@/context/theme-context';
 import { BsMoonFill, BsSunFill } from 'react-icons/bs'
-import whiteImg from '/public/whiteFill.svg'
+import whiteImg from '../../public/whiteFill.svg'
 
 export default function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
   const { theme, toggleTheme } = useTheme()
 
   return <header className='z-[999] relative'>
-    <motion.div 
+    <motion.div
       className='fixed bottom-9 left-1/2 h-[3.25rem] w-[22.5rem] rounded-full bg-[#151515] bg-opacity-60 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem] sm:top-6 sm:rounded-full dark:bg-[#2B2C28] dark:bg-opacity-50'
       initial={{ y: -100, x: '-50%', opacity: 0 }}
       animate={{ y: 0, x: '-50%', opacity: 1 }}

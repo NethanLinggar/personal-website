@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 type EmbedType = "steam" | "spotify" | "letterboxd";
 
@@ -70,7 +70,7 @@ const EmbedComponent: React.FC<EmbedComponentProps> = ({ type, isVisible, onClos
             <iframe
               src="https://nethanlinggar.github.io/letterboxd-miniprofile/?user=smeggy&favorites=true&unclickable=true"
               className="w-[332px] h-[280px]"
-              style={{ zoom: "0.9", border: "none" }}
+              style={{ zoom: "0.8", border: "none" }}
               allow="encrypted-media"
               allowFullScreen
               title="Letterboxd Embed"
