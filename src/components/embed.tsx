@@ -23,6 +23,7 @@ const EmbedComponent: React.FC<EmbedComponentProps> = ({ type, isVisible, onClos
 
   return (
     <motion.div
+      data-embed-type={type}
       className="fixed bottom-24 right-[0.2px] w-full flex justify-center sm:w-auto sm:bottom-8 sm:right-8 sm:justify-end z-50"
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{
@@ -34,7 +35,7 @@ const EmbedComponent: React.FC<EmbedComponentProps> = ({ type, isVisible, onClos
     >
       <div className="bg-[#151515] bg-opacity-60 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem] dark:bg-[#2B2C28] dark:bg-opacity-50 rounded-lg p-2 relative">
         <button
-          className={`absolute top-2 left-3 text-lg`}
+          className="absolute top-2 left-3 text-lg"
           onClick={() => canClose && onClose()}
           disabled={!canClose}
         >
@@ -67,7 +68,7 @@ const EmbedComponent: React.FC<EmbedComponentProps> = ({ type, isVisible, onClos
           <div>
             <span className="text-md">Letterboxd</span>
             <iframe
-              src="https://nethanlinggar.github.io/letterboxd-miniprofile/?user=smeggy&type=favorites"
+              src="https://nethanlinggar.github.io/letterboxd-miniprofile/?user=smeggy&favorites=true&unclickable=true"
               className="w-[332px] h-[280px]"
               style={{ zoom: "0.9", border: "none" }}
               allow="encrypted-media"

@@ -20,8 +20,15 @@ export default function About() {
   };
 
   const handleMouseLeave = () => {
+    // Only hide embed if it wasn't clicked and if we're not hovering the embed itself
     if (!clicked) {
-      setActiveEmbed(null);
+      // Small delay to check if we're hovering the embed
+      setTimeout(() => {
+        const embedElement = document.querySelector('[data-embed-type="' + activeEmbed + '"]');
+        if (embedElement && !embedElement.matches(':hover')) {
+          setActiveEmbed(null);
+        }
+      }, 100);
     }
   };
 
@@ -81,7 +88,7 @@ export default function About() {
           onMouseLeave={handleMouseLeave}
           onClick={() => handleClick("letterboxd")}
         >
-          movies 
+          movies
         </span>
         {" "}or TV series, listening to{" "}
         <span
