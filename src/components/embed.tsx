@@ -47,7 +47,6 @@ const EmbedComponent: React.FC<EmbedComponentProps> = ({ type, isVisible, onClos
             <iframe
               src="https://gamer2810.github.io/steam-miniprofile/?interactive=true&accountId=76561198179349126"
               className="w-[340px] h-[230px] sm:w-[342px] sm:h-[228px]"
-              style={{ zoom: "0.9", border: "none" }}
               allow="encrypted-media"
               allowFullScreen
               title="Steam Embed"
@@ -70,7 +69,6 @@ const EmbedComponent: React.FC<EmbedComponentProps> = ({ type, isVisible, onClos
             <iframe
               src="https://nethanlinggar.github.io/letterboxd-miniprofile/?user=smeggy&favorites=true&unclickable=true"
               className="w-[332px] h-[280px]"
-              style={{ zoom: "0.8", border: "none" }}
               allow="encrypted-media"
               allowFullScreen
               title="Letterboxd Embed"
