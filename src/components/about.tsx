@@ -59,18 +59,12 @@ export default function About() {
       <SectionHeading>About Me</SectionHeading>
 
       <p className="mb-3">
-        My name is Nethan and I (<span className="italic">am trying to</span>) specialize in <span className="font-bold">Software Engineering</span>!
-        I had just graduated from{" "}
-        <span className="italic">
-          Sepuluh Nopember Institute of Technology
-        </span>{" "}
-        earning my <span className="italic">Bachelor's degree</span> in{" "}
-        <span className="font-bold">Computer Science</span>. Known as someone who is critical and enthusiastic, I'm experienced in building <span className="underline">frontend</span>, <span className="underline">backend</span>, and <span className="underline">Android</span> frameworks that's integrated with <span className="underline">machine learning</span> capabilities.
+        My name is <span className="font-bold">Nethan</span>, and I specialize in <span className="font-bold">Software Engineering</span>. I recently graduated from Sepuluh Nopember Institute of Technology with a Bachelor's in <span className="italic">Computer Science</span>. Known for being both critical and enthusiastic, I've gained solid experience in developing <span className="italic">software</span> integrated with <span className="italic">machine learning</span> capabilities throughout my career so far.
       </p>
 
       <p>
-        Outside of <span className="italic">coding</span>, I have various{" "}
-        <span className="font-bold">hobbies</span>, including playing{" "}
+        Outside of coding, I have various{" "}
+        <span className="italic">hobbies</span>, including playing{" "}
         <span
           className={`cursor-pointer underline transition-colors duration-300 ${activeEmbed === "steam" ? "text-steam-blue animate-color-change" : "hover:text-steam-blue text-red"
             }`}

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from 'next/image';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Source_Code_Pro } from 'next/font/google';
 import { motion } from 'motion/react';
 import { BsLinkedin } from 'react-icons/bs';
@@ -12,12 +12,26 @@ import TypeIt from 'typeit-react';
 import monitorBig from '../../public/monitorBig.png';
 import monitorSmall from '../../public/monitorSmall.png';
 import name from '../../public/name.png';
+import ksc75 from '../../public/ksc75.png';
 import blackOutline from '../../public/blackOutline.png';
 
 const code = Source_Code_Pro({ subsets: ['latin'] });
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  // Check for mobile device on client-side only
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <section ref={ref} id="home" className="mb-28 max-w-[45rem] text-center sm:mb-0 scroll-mt-[100rem]">
@@ -34,90 +48,98 @@ export default function Intro() {
                 duration: 0.2,
               }}
             >
-              <Image
-                src={monitorBig}
-                alt="Monitor"
-                quality="80"
-                priority={true}
-                className="relative hidden sm:block"
-              />
-              <Image
-                src={monitorSmall}
-                alt="Monitor"
-                quality="70"
-                priority={true}
-                className="relative block sm:hidden"
-              />
+              {!isMobile ? (
+                <Image
+                  src={monitorBig}
+                  alt="Monitor"
+                  quality={80}
+                  priority={true}
+                  className="relative"
+                />
+              ) : (
+                <Image
+                  src={monitorSmall}
+                  alt="Monitor"
+                  quality={70}
+                  priority={true}
+                  className="relative"
+                />
+              )}
 
               {/* Inside Monitor */}
-              <div className={`${code.className} absolute inset-0 top-[-27%] flex justify-between items-center overflow-hidden px-[5%]`}>
+              <div className={`${code.className} absolute inset-0 top-[-35%] flex justify-between items-center overflow-hidden px-[5%]`}>
                 <div className="flex justify-between items-center space-x-8 w-full">
                   {/* Logo Image */}
-                  <div className="w-[200px] text-right hidden sm:block">
-                    <Image
-                      src={blackOutline}
-                      alt="Logo Image"
-                      width={200}
-                      height={200}
-                    />
-                    <p className="text-xs sm:text-sm font-medium !leading-[1.5] sm:!leading-[2.2] dark:text-black">
-                      <br />
-                      <span>based in Jakarta,</span>
-                      <br />
-                      <span>still a junior,</span>
-                      <br />
-                      <span>very passionate</span>
-                    </p>
-                  </div>
+                  {!isMobile && (
+                    <div className="w-[200px] text-right">
+                      <Image
+                        src={blackOutline}
+                        alt="Logo Image"
+                        width={200}
+                        height={200}
+                      />
+                      <p className="text-xs sm:text-sm font-medium !leading-[1.5] sm:!leading-[2.2] dark:text-black">
+                        <br />
+                        <span>based in Jakarta,</span>
+                        <br />
+                        <span>barely a junior,</span>
+                        <br />
+                        <span>very passionate</span>
+                      </p>
+                    </div>
+                  )}
 
                   {/* Heading */}
-                  <div className="text-left w-full text-lg sm:text-[1.8rem] font-medium !leading-[1.2] sm:!leading-[1.4] dark:text-black block sm:hidden">
-                    <p>a <strong>software engineer</strong> w/ a small interest in <em>machine learning</em>.</p>
-                    <br />
-                    <p>also a huge <u>nerd</u> & have great taste in <u>design</u>.</p>
-                  </div>
-                  <div className="text-left w-full text-lg sm:text-[1.8rem] font-medium !leading-[1.2] sm:!leading-[1.4] dark:text-black hidden sm:block">
-                    <TypeIt
-                      getBeforeInit={(instance) => {
-                        instance
-                          .options({ speed: 10, lifeLike: true })
-                          .pause(400)
-                          .type("a <strong>software enginer</strong>")
-                          .pause(25)
-                          .delete(1)
-                          .type("<strong>er</strong> ")
-                          .pause(150)
-                          .type("w/ a small interest in ")
-                          .pause(100)
-                          .type(".")
-                          .pause(100)
-                          .type(".")
-                          .pause(100)
-                          .type(".")
-                          .pause(100)
-                          .delete(3)
-                          .type("<em>machine learning</em>.")
-                          .pause(350)
-                          .break()
-                          .break()
-                          .type("also ")
-                          .pause(150)
-                          .type("a huge <u>geek</u>")
-                          .pause(200)
-                          .delete(4)
-                          .type("<u>nerd</u>")
-                          .pause(250)
-                          .type(" & have greate")
-                          .pause(25)
-                          .delete(1)
-                          .type(" taste in <u>design</u>")
-                          .pause(250)
-                          .type(".")
+                  {isMobile ? (
+                    <div className="text-left w-full text-lg font-medium !leading-[1.2] dark:text-black">
+                      <p>a <strong>software engineer</strong> w/ a small interest in <em>machine learning</em>.</p>
+                      <br />
+                      <p>also a huge <u>nerd</u> & have great taste in <u>design</u>.</p>
+                    </div>
+                  ) : (
+                    <div className="text-left w-full text-[1.8rem] font-medium !leading-[1.4] dark:text-black">
+                      <TypeIt
+                        getBeforeInit={(instance) => {
+                          instance
+                            .options({ speed: 10, lifeLike: true })
+                            .pause(400)
+                            .type("a <strong>software enginer</strong>")
+                            .pause(25)
+                            .delete(1)
+                            .type("<strong>er</strong> ")
+                            .pause(150)
+                            .type("w/ a small interest in ")
+                            .pause(100)
+                            .type(".")
+                            .pause(100)
+                            .type(".")
+                            .pause(100)
+                            .type(".")
+                            .pause(100)
+                            .delete(3)
+                            .type("<em>machine learning</em>.")
+                            .pause(350)
+                            .break()
+                            .break()
+                            .type("also ")
+                            .pause(150)
+                            .type("a huge <u>geek</u>")
+                            .pause(200)
+                            .delete(4)
+                            .type("<u>nerd</u>")
+                            .pause(250)
+                            .type(" & have greate")
+                            .pause(25)
+                            .delete(1)
+                            .type(" taste in <u>design</u>")
+                            .pause(250)
+                            .type(".")
 
-                        return instance;
-                      }}
-                    />
-                  </div>
+                          return instance;
+                        }}
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -128,7 +150,7 @@ export default function Intro() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{
               type: "spring",
-              stiffness: "125",
+              stiffness: 125,
               delay: 0.1,
               duration: 0.7,
             }}
@@ -136,9 +158,42 @@ export default function Intro() {
             <Image
               src={name}
               alt="Nametag"
-              quality="80"
+              quality={80}
               priority={true}
               className="w-[20vw] min-w-[120px] max-w-[200px]"
+            />
+          </motion.div>
+          {/* KSC75 */}
+          <motion.div 
+            className="absolute z-20 top-[0.5rem] sm:top-[0.75rem] right-[0rem]"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1,
+              rotate: !isMobile ? [5, -5, 3, -3] : 0,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 125,
+              delay: 0.1,
+              duration: 0.7,
+              rotate: {
+                duration: 4,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut"
+              }
+            }}
+            style={{ 
+              transformOrigin: "top center"
+            }}
+          >
+            <Image
+              src={ksc75}
+              alt="KSC75"
+              quality={isMobile ? 70 : 80}
+              priority={true}
+              className="w-[10vw] min-w-[50px] max-w-[100px]"
             />
           </motion.div>
         </div>
@@ -157,6 +212,7 @@ export default function Intro() {
           className="group bg-black text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 hover:underline active:scale-105 transition"
           href="https://drive.google.com/file/d/1HBvUFSV8CyuP3FJXbCGreTFZYwP1qD7j/view?usp=sharing"
           target="_blank"
+          rel="noopener noreferrer"
         >
           Download CV{" "}
           <HiDownload className="opacity-70 pb-0.2 group-hover:translate-y-0.5 transition" />
@@ -165,6 +221,7 @@ export default function Intro() {
           className="bg-dark-gray/50 p-4 text-white hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer dark:bg-white/10 dark:text-white/80"
           href="https://www.linkedin.com/in/nethaneel-patricio-linggar/"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <BsLinkedin />
         </a>
@@ -172,6 +229,7 @@ export default function Intro() {
           className="bg-dark-gray/50 p-4 text-white hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer dark:bg-white/10 dark:text-white/80"
           href="https://github.com/NethanLinggar"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <FaGithubSquare />
         </a>

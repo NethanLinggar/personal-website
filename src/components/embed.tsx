@@ -35,7 +35,7 @@ const EmbedComponent: React.FC<EmbedComponentProps> = ({ type, isVisible, onClos
     >
       <div className="bg-[#151515] bg-opacity-60 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem] dark:bg-[#2B2C28] dark:bg-opacity-50 rounded-lg p-2 relative">
         <button
-          className="absolute top-2 left-3 text-lg"
+          className="absolute top-2 right-3 text-lg"
           onClick={() => canClose && onClose()}
           disabled={!canClose}
         >

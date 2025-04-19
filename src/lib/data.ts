@@ -35,23 +35,23 @@ export const experiencesData = [
     title: "Analyst Developer",
     location: "PT Phoenix Solusi Indonesia",
     description:
-      "Full time at said telematics provider company. Worked with GPS systems, such as Wialon and Flespi, and maintain it for clients",
+      "Full time at the telematics provider company. Worked with GPS systems, such as Wialon and Flespi, and maintain it for clients",
     icon: React.createElement(LuGraduationCap),
     date: "Oct 2024 - Now",
   },
   {
-    title: "Graduated from College",
+    title: "Computer Science Graduate",
     location: "Sepuluh Nopember Institute of Technology",
     description:
-      "I graduated cum laude after 4 years of studying Computer Science with a 3.67 GPA. Final thesis is a Facial Recognition Attendance System.",
+      "Graduated cum laude with a 3.67 GPA. Final thesis is a Facial Recognition Attendance System.",
     icon: React.createElement(LuGraduationCap),
-    date: "2020 - 2024",
+    date: "Aug 2020 - Aug 2024",
   },
   {
     title: "Junior Software Developer",
     location: "PT Bispro Consulting",
     description:
-      "Hybrid contract for 3 months at said consulting firm. Worked with M-Files, a document management platform.",
+      "Hybrid contract for 3 months at the consulting firm. Worked with M-Files, a document management platform.",
     icon: React.createElement(CgWorkAlt),
     date: "Dec 2023 - Feb 2024",
   },
