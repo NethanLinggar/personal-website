@@ -26,10 +26,11 @@ export default function Project({ title, description, tags, imageUrl }: ProjectP
       className='group mb-3 sm:mb-8 last:mb-0'
     >
       <section
-        className='bg-light-gray/20 hover:bg-light-gray/10 max-w-[42rem] border border-black/5 rounded-lg overflow-hidden sm:pr-8 relative sm:h-[20rem]  hover:bg-gray-200 transition sm:group-even:pl-8 dark:text-white dark:bg-white/10 dark:hover:bg-white/20'
+        className='max-w-[62rem] border border-black/5 rounded-lg overflow-visible sm:pr-8 relative sm:h-[20rem] transition sm:group-even:p-'
       >
-        <div className='pt-4 pb-7 px-5 sm:pl-10 sm:pr-2 sm:pt-10 sm:max-w-[50%] flex flex-col h-full sm:group-even:ml-[18rem]'>
-          <h3 className='text-2xl font-semibold'>{title}</h3>
+        <div className='absolute inset-0 sm:top-8 bg-light-gray/20 group-hover:bg-light-gray/10 group-hover:bg-gray-200 dark:bg-white/10 dark:group-hover:bg-white/20 rounded-lg transition'></div>
+        <div className='relative pt-4 pb-7 px-5 sm:pl-10 sm:pr-2 sm:pt-16 sm:max-w-[50%] flex flex-col h-full sm:group-even:ml-[50%]'>
+          <h3 className='text-2xl font-semibold dark:text-white'>{title}</h3>
           <p className='mt-2 leading-relaxed text-dark-gray dark:text-white/70 text-sm sm:text-base sm:leading-relaxed'>{description}</p>
           <ul className='flex flex-wrap mt-4 gap-2 sm:mt-auto'>
             {tags.map((tag, index) => (
@@ -42,23 +43,24 @@ export default function Project({ title, description, tags, imageUrl }: ProjectP
             ))}
           </ul>
         </div>
-
-        <Image
-          src={imageUrl}
-          alt='Project I Worked On'
-          quality={95}
-          className='absolute hidden sm:block top-8 -right-40 w-[28.25rem] rounded-lg shadow-2xl 
-          transition
-          group-hover:scale-[1.04]
-          group-hover:-translate-x-3
-          group-hover:translate-y-3
-          group-hover:-rotate-2
-          
-          group-even:group-hover:translate-x-3
-          group-even:group-hover:rotate-2
-
-          group-even:right-[initial] group-even:-left-40'
-        />
+        <div
+          className="absolute hidden sm:block top-0 bottom-0 right-0 w-1/2 
+          overflow-hidden
+          group-even:right-[initial] group-even:left-0"
+        >
+          <Image
+            src={imageUrl}
+            alt="Project I Worked On"
+            quality={95}
+            className="
+              absolute top-5 left-1/2 -translate-x-1/2 
+              w-[75%] min-w-[300px]
+              transition
+              group-hover:scale-[1.05]
+              group-hover:-translate-y-3
+            "
+          />
+        </div>
       </section>
     </motion.div>
   )

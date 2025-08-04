@@ -12,7 +12,7 @@ import TypeIt from 'typeit-react';
 import monitorBig from '../../public/monitorBig.png';
 import monitorSmall from '../../public/monitorSmall.png';
 import name from '../../public/name.png';
-import ksc75 from '../../public/ksc75.png';
+import koss from '../../public/koss.png';
 import blackOutline from '../../public/blackOutline.png';
 
 const code = Source_Code_Pro({ subsets: ['latin'] });
@@ -20,16 +20,16 @@ const code = Source_Code_Pro({ subsets: ['latin'] });
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
   const [isMobile, setIsMobile] = useState(false);
-  
+
   // Check for mobile device on client-side only
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 640);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
+
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
@@ -163,12 +163,12 @@ export default function Intro() {
               className="w-[20vw] min-w-[120px] max-w-[200px]"
             />
           </motion.div>
-          {/* KSC75 */}
-          <motion.div 
+          {/* koss */}
+          <motion.div
             className="absolute z-20 top-[0.5rem] sm:top-[0.75rem] right-[0rem]"
             initial={{ opacity: 0, scale: 0 }}
-            animate={{ 
-              opacity: 1, 
+            animate={{
+              opacity: 1,
               scale: 1,
               rotate: !isMobile ? [5, -5, 3, -3] : 0,
             }}
@@ -184,13 +184,13 @@ export default function Intro() {
                 ease: "easeInOut"
               }
             }}
-            style={{ 
+            style={{
               transformOrigin: "top center"
             }}
           >
             <Image
-              src={ksc75}
-              alt="KSC75"
+              src={koss}
+              alt="koss"
               quality={isMobile ? 70 : 80}
               priority={true}
               className="w-[10vw] min-w-[50px] max-w-[100px]"
