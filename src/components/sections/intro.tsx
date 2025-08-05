@@ -3,23 +3,36 @@
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { Source_Code_Pro } from 'next/font/google';
-import { motion } from 'motion/react';
+import { RiMailFill } from "react-icons/ri";
+import { AnimatePresence, motion } from 'motion/react';
 import { BsLinkedin } from 'react-icons/bs';
 import { HiDownload } from 'react-icons/hi';
 import { FaGithubSquare } from 'react-icons/fa';
-import { useSectionInView } from '@/lib/hooks';
+import { useSectionInView, useEmbed } from '@/lib/hooks';
 import TypeIt from 'typeit-react';
-import monitorBig from '../../public/monitorBig.png';
-import monitorSmall from '../../public/monitorSmall.png';
-import name from '../../public/name.png';
-import koss from '../../public/koss.png';
-import blackOutline from '../../public/blackOutline.png';
+import monitorBig from '../../../public/monitorBig.png';
+import monitorSmall from '../../../public/monitorSmall.png';
+import name from '../../../public/name.png';
+import koss from '../../../public/koss.png';
+import blackOutline from '../../../public/blackOutline.png';
+import SocialButton from '../ui/social';
 
 const code = Source_Code_Pro({ subsets: ['latin'] });
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
   const [isMobile, setIsMobile] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
+  const { activeEmbed, handleMouseEnter, handleMouseLeave, handleClick, handleClose } = useEmbed();
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("nethan.linggar@gmail.com").then(() => {
+      setShowTooltip(true);
+      setTimeout(() => setShowTooltip(false), 2000);
+    }).catch((err) => {
+      console.error("Failed to copy email: ", err);
+    });
+  };
 
   // Check for mobile device on client-side only
   useEffect(() => {
@@ -204,35 +217,41 @@ export default function Intro() {
         className="flex flex-col sm:flex-row items-center justify-center gap-3 px-4 text-lg font-medium"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.1,
-        }}
+        transition={{ delay: 0.1 }}
       >
         <a
-          className="group bg-black text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 hover:underline active:scale-105 transition"
+          className="group bg-black text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 hover:underline active:scale-105 transition dark:bg-white dark:text-black dark:hover:bg-gray-200 dark:hover:text-black"
           href="https://drive.google.com/file/d/1HBvUFSV8CyuP3FJXbCGreTFZYwP1qD7j/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
         >
           Download CV{" "}
-          <HiDownload className="opacity-70 pb-0.2 group-hover:translate-y-0.5 transition" />
+          <HiDownload className="opacity-70 pb-0.5 group-hover:translate-y-0.5 transition" />
         </a>
-        <a
-          className="bg-dark-gray/50 p-4 text-white hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer dark:bg-white/10 dark:text-white/80"
-          href="https://www.linkedin.com/in/nethaneel-patricio-linggar/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <div className="relative">
+          <SocialButton onClick={handleCopyEmail}>
+            <RiMailFill />
+          </SocialButton>
+          <AnimatePresence>
+            {showTooltip && (
+              <motion.div
+                className="absolute top-16 -left-1/2 mb-2 center bg-black/80 text-white text-sm py-1 px-2 rounded-md w-max box-border dark:bg-white/80 dark:text-black"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.5 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                Email copied!
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+        <SocialButton href="https://www.linkedin.com/in/nethaneel-patricio-linggar/" target="_blank" rel="noopener noreferrer">
           <BsLinkedin />
-        </a>
-        <a
-          className="bg-dark-gray/50 p-4 text-white hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer dark:bg-white/10 dark:text-white/80"
-          href="https://github.com/NethanLinggar"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        </SocialButton>
+        <SocialButton href="https://github.com/NethanLinggar" target="_blank" rel="noopener noreferrer">
           <FaGithubSquare />
-        </a>
+        </SocialButton>
       </motion.div>
     </section>
   );

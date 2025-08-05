@@ -1,9 +1,9 @@
-import Header from "@/components/header";
+import Header from "@/components/sections/header";
 import './globals.css';
 import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 import ActiveSectionContextProvider from "@/context/active-section-context";
-import Footer from "@/components/footer";
+import Footer from "@/components/sections/footer";
 import ThemeContextProvider from "@/context/theme-context";
 
 const sans = Source_Sans_3({ subsets: ['latin'] })

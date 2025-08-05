@@ -1,51 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import SectionHeading from "./section-heading";
+import React from "react";
+import SectionHeading from "../ui/section-heading";
 import { motion } from "motion/react";
-import { useSectionInView } from "@/lib/hooks";
-import EmbedComponent from "./embed"; // Import here
-
-type EmbedType = "steam" | "spotify" | "letterboxd" | null;
+import { useSectionInView, useEmbed } from "@/lib/hooks";
+import EmbedComponent from "../ui/embed";
 
 export default function About() {
   const { ref } = useSectionInView("About");
-  const [activeEmbed, setActiveEmbed] = useState<EmbedType>(null);
-  const [clicked, setClicked] = useState<boolean>(false);
-
-  const handleMouseEnter = (type: EmbedType) => {
-    if (!clicked) {
-      setActiveEmbed(type);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    // Only hide embed if it wasn't clicked and if we're not hovering the embed itself
-    if (!clicked) {
-      // Small delay to check if we're hovering the embed
-      setTimeout(() => {
-        const embedElement = document.querySelector('[data-embed-type="' + activeEmbed + '"]');
-        if (embedElement && !embedElement.matches(':hover')) {
-          setActiveEmbed(null);
-        }
-      }, 100);
-    }
-  };
-
-  const handleClick = (type: EmbedType) => {
-    if (activeEmbed === type && clicked) {
-      setClicked(false);
-      setActiveEmbed(null);
-    } else {
-      setClicked(true);
-      setActiveEmbed(type);
-    }
-  };
-
-  const handleClose = () => {
-    setActiveEmbed(null);
-    setClicked(false); // Reset clicked state
-  };
+  const { activeEmbed, handleMouseEnter, handleMouseLeave, handleClick, handleClose } = useEmbed();
 
   return (
     <motion.section

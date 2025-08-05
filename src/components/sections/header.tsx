@@ -9,7 +9,7 @@ import clsx from 'clsx';
 import { useActiveSectionContext } from '@/context/active-section-context';
 import { useTheme } from '@/context/theme-context';
 import { BsMoonFill, BsSunFill } from 'react-icons/bs'
-import whiteImg from '../../public/whiteFill.svg'
+import whiteImg from '../../../public/whiteFill.svg'
 
 export default function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } = useActiveSectionContext();

@@ -57,7 +57,7 @@ const EmbedComponent: React.FC<EmbedComponentProps> = ({ type, isVisible, onClos
             <span className="text-md">Spotify</span>
             <iframe
               src="https://open.spotify.com/embed/playlist/0f2QMtBgbgeTAVyV7YsxMH"
-              className="w-full h-[80px] sm:w-[400px] sm:h-[152px]"
+              className="w-[400px] h-[152px]"
               allow="encrypted-media"
               allowFullScreen
               title="Spotify Embed"

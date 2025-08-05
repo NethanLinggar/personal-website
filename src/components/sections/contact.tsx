@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { RiMailFill } from "react-icons/ri";
 import { BsLinkedin } from 'react-icons/bs';
 import { FaGithubSquare, FaInstagramSquare } from 'react-icons/fa';
+import SocialButton from '../ui/social';
 
 export default function Contact() {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -37,17 +38,13 @@ export default function Contact() {
         }}
       >
         <div className="relative">
-          <a
-            className="bg-dark-gray/50 p-4 text-white hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer dark:bg-white/10 dark:text-white/80"
-            target="_blank"
-            onClick={handleCopyEmail}
-          >
+          <SocialButton onClick={handleCopyEmail}>
             <RiMailFill />
-          </a>
+          </SocialButton>
           <AnimatePresence>
             {showTooltip && (
               <motion.div
-                className="absolute bottom-14 -left-1/2 mb-2 center bg-black/80 text-white text-sm py-1 px-2 rounded-md w-max box-border dark:bg-white/80 dark:text-black"
+                className="absolute top-16 -left-1/2 mb-2 center bg-black/80 text-white text-sm py-1 px-2 rounded-md w-max box-border dark:bg-white/80 dark:text-black"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.5 }}
@@ -58,28 +55,28 @@ export default function Contact() {
             )}
           </AnimatePresence>
         </div>
-        <a
-          className="bg-dark-gray/50 p-4 text-white hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer dark:bg-white/10 dark:text-white/80"
+
+        <SocialButton
           href="https://www.linkedin.com/in/nethaneel-patricio-linggar/"
           target="_blank"
         >
           <BsLinkedin />
-        </a>
-        <a
-          className="bg-dark-gray/50 p-4 text-white hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer dark:bg-white/10 dark:text-white/80"
+        </SocialButton>
+
+        <SocialButton
           href="https://github.com/NethanLinggar"
           target="_blank"
         >
           <FaGithubSquare />
-        </a>
-        <a
-          className="bg-dark-gray/50 p-4 text-white hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer dark:bg-white/10 dark:text-white/80"
+        </SocialButton>
+
+        <SocialButton
           href="https://www.instagram.com/nethanpat/"
           target="_blank"
         >
           <FaInstagramSquare />
-        </a>
+        </SocialButton>
       </motion.div>
     </section>
-  )
+  );
 }
