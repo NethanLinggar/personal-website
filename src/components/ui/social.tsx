@@ -23,7 +23,7 @@ const SocialButton: React.FC<SocialButtonProps> = ({
   target,
   rel
 }) => {
-  const baseClasses = "bg-dark-gray/50 p-4 text-white hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer dark:bg-white/10 dark:text-white/80";
+  const baseClasses = "bg-dark-gray/50 p-4 text-white hover:text-gray-950 flex items-center gap-2 rounded-full hover:scale-[1.15] active:scale-105 transition cursor-pointer dark:bg-white/10 dark:text-white/80";
 
   const combinedClasses = `${baseClasses} ${className}`;
 
@@ -44,15 +44,15 @@ const SocialButton: React.FC<SocialButtonProps> = ({
   }
 
   return (
-    <a
+    <button
+      type="button"
       className={combinedClasses}
-      href="#"
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
       {children}
-    </a>
+    </button>
   );
 };
 

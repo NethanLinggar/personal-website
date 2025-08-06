@@ -220,13 +220,13 @@ export default function Intro() {
         transition={{ delay: 0.1 }}
       >
         <a
-          className="group bg-black text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 hover:underline active:scale-105 transition dark:bg-white dark:text-black dark:hover:bg-gray-200 dark:hover:text-black"
+          className="group bg-black text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:underline underline-offset-2 decoration-2 active:scale-105 transition dark:bg-white dark:text-black dark:hover:text-black"
           href="https://drive.google.com/file/d/1HBvUFSV8CyuP3FJXbCGreTFZYwP1qD7j/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
         >
           Download CV{" "}
-          <HiDownload className="opacity-70 pb-0.5 group-hover:translate-y-0.5 transition" />
+          <HiDownload className="group-hover:translate-y-0.5 transition" />
         </a>
         <div className="relative">
           <SocialButton onClick={handleCopyEmail}>

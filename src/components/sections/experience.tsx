@@ -22,6 +22,7 @@ export default function Experience() {
         <React.Fragment key={index}>
           <VerticalTimelineElement
             visible={hasAnimated ? true : inView}
+            className="sm:even:!pl-4 sm:odd:!pr-4"
             contentStyle={{
               background: theme === "light" ? "rgba(43, 44, 40, 0.1)" : "rgba(232, 235, 234, 0.1)",
               boxShadow: "none",
@@ -34,6 +35,7 @@ export default function Experience() {
               margin: "1px"
             }}
             date={item.date}
+            dateClassName="sm:!ml-6 sm:!mr-6"
             icon={item.icon}
             iconStyle={{
               background: theme === "light" ? "#E8EBEA" : "#0A0A0A",

@@ -3,6 +3,7 @@ import { CgWorkAlt } from "react-icons/cg";
 import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 import FCRImg from "../../public/fcr.png";
+import TDAImg from "../../public/tda.png";
 import ERPImg from "../../public/erp.png";
 import MSCImg from "../../public/msc.png";
 
@@ -31,10 +32,10 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Analyst Developer",
+    title: "Developer Consultant",
     location: "PT Phoenix Solusi Indonesia",
     description:
-      "Full time at the telematics provider company. Worked with GPS systems, such as Wialon and Flespi, and maintain it for clients",
+      "Full time at the telematics provider company. Working with Fleet Management Systems and build supporting apps.",
     icon: React.createElement(LuGraduationCap),
     date: "Oct 2024 - Now",
   },
@@ -68,9 +69,16 @@ export const projectsData = [
   {
     title: "Face Recognition Attendance System",
     description:
-      "My final thesis which is to create an attendance system using facial recognition. Includes a backend, Android, and camera app.",
+      "My final thesis which is to create a fully fledged attendance system using facial recognition. Includes a backend, Android, and camera app.",
     tags: ["Python", "Express.js", "JavaScript", "MySQL"],
     imageUrl: FCRImg,
+  },
+  {
+    title: "Rugged Tablet Demo App",
+    description:
+      "Created a demo app to test a Fleet Management Kit and showcase a rugged tablet' support for docking station communication protocols.",
+    tags: ["Kotlin", "Android", "Embedded Systems"],
+    imageUrl: TDAImg,
   },
   {
     title: "myITS StudentConnect",
@@ -91,19 +99,23 @@ export const projectsData = [
 export const skillsData = [
   "C++",
   "Java",
-  "PHP",
+  "TypeScript",
   "JavaScript",
   "Kotlin",
-  "SQL",
-  "Bash/ Shell Scripting",
+  "MySQL",
+  "PosgreSQL",
   "Python",
-  "Laravel",
+  "Arduino",
   "React",
   "Next.js",
   "Node.js",
   "Express.js",
-  "Android Studio",
+  "Golang",
+  "Android",
+  "Docker",
+  "Bash / Shell Scripting",
   "Agile Methods (Scrum)",
   "Project Management (JIRA, Trello)",
   "Tensorflow",
+  "Embedded Systems",
 ] as const;
