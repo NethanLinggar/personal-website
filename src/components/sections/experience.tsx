@@ -26,13 +26,11 @@ export default function Experience() {
             contentStyle={{
               background: theme === "light" ? "rgba(43, 44, 40, 0.1)" : "rgba(232, 235, 234, 0.1)",
               boxShadow: "none",
-              border: theme === "light" ? "1px solid rgba(43, 44, 40, 0.1)" : "1px solid rgba(232, 235, 234, 0.1)",
               textAlign: "left",
               padding: "1.3rem 2rem"
             }}
             contentArrowStyle={{
-              borderRight: theme === "light" ? "0.4rem solid rgba(43, 44, 40, 0.1)" : "0.4rem solid rgba(232, 235, 234, 0.1)",
-              margin: "1px"
+              borderRight: theme === "light" ? "0.4rem solid rgba(43, 44, 40, 0.1)" : "0.4rem solid rgba(232, 235, 234, 0.1)"
             }}
             date={item.date}
             dateClassName="sm:!ml-6 sm:!mr-6"

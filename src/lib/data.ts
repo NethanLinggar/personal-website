@@ -36,7 +36,7 @@ export const experiencesData = [
     location: "PT Phoenix Solusi Indonesia",
     description:
       "Full time at the telematics provider company. Working with Fleet Management Systems and build supporting apps.",
-    icon: React.createElement(LuGraduationCap),
+    icon: React.createElement(CgWorkAlt),
     date: "Oct 2024 - Now",
   },
   {

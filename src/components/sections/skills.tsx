@@ -39,7 +39,7 @@ export default function Skills() {
               {rowSkills.map((skill, index) => (
                 <div
                   key={index}
-                  className="mx-2 inline-block px-5 py-3 text-base sm:text-lg text-gray-800 dark:text-white bg-light-gray/10 dark:bg-white/10 hover:bg-black/90 hover:text-white dark:hover:bg-white/90 dark:hover:text-black border border-black/[0.1] dark:border-white/[0.1] rounded-xl"
+                  className="mx-2 inline-block px-5 py-3 text-base sm:text-lg text-gray-800 dark:text-white bg-light-gray/10 dark:bg-white/10 hover:bg-black/90 hover:text-white dark:hover:bg-white/90 dark:hover:text-black rounded-xl"
                 >
                   {skill}
                 </div>

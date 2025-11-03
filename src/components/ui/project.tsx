@@ -26,7 +26,7 @@ export default function Project({ title, description, tags, imageUrl }: ProjectP
       className='group mb-3 sm:mb-8 last:mb-0'
     >
       <section
-        className='max-w-[62rem] rounded-lg overflow-visible sm:pr-8 relative sm:h-[20rem] transition sm:group-even:p-'
+        className='max-w-[62rem] rounded-lg overflow-visible sm:pr-8 relative sm:h-[20rem] transition'
       >
         <div className='absolute inset-0 sm:top-8 bg-light-gray/20 group-hover:bg-light-gray/10 group-hover:bg-gray-200 dark:bg-white/10 dark:group-hover:bg-white/20 rounded-lg transition'></div>
         <div className='relative pt-4 pb-7 px-5 sm:pl-10 sm:pr-2 sm:pt-16 sm:max-w-[50%] flex flex-col h-full sm:group-even:ml-[50%]'>
@@ -57,7 +57,7 @@ export default function Project({ title, description, tags, imageUrl }: ProjectP
               w-[75%] min-w-[300px]
               transition
               group-hover:scale-[1.05]
-              group-hover:-translate-y-3
+              group-hover:-translate-y-2
             "
           />
         </div>
