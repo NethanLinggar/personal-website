@@ -1,37 +1,46 @@
 "use client";
 
-import Image from 'next/image';
-import React, { useState, useEffect } from 'react';
-import { Source_Code_Pro } from 'next/font/google';
+import Image from "next/image";
+import React, { useState, useEffect } from "react";
+import { Source_Code_Pro } from "next/font/google";
 import { RiMailFill } from "react-icons/ri";
-import { AnimatePresence, motion } from 'motion/react';
-import { BsLinkedin } from 'react-icons/bs';
-import { HiDownload } from 'react-icons/hi';
-import { FaGithubSquare } from 'react-icons/fa';
-import { useSectionInView, useEmbed } from '@/lib/hooks';
-import TypeIt from 'typeit-react';
-import monitorBig from '../../../public/monitorBig.png';
-import monitorSmall from '../../../public/monitorSmall.png';
-import name from '../../../public/name.png';
-import koss from '../../../public/koss.png';
-import blackOutline from '../../../public/blackOutline.png';
-import SocialButton from '../ui/social';
+import { AnimatePresence, motion } from "motion/react";
+import { BsLinkedin } from "react-icons/bs";
+import { HiDownload } from "react-icons/hi";
+import { FaGithubSquare } from "react-icons/fa";
+import { useSectionInView, useEmbed } from "@/lib/hooks";
+import TypeIt from "typeit-react";
+import monitorBig from "../../../public/monitorBig.png";
+import monitorSmall from "../../../public/monitorSmall.png";
+import name from "../../../public/name.png";
+import koss from "../../../public/koss.png";
+import blackOutline from "../../../public/blackOutline.png";
+import SocialButton from "../ui/social";
 
-const code = Source_Code_Pro({ subsets: ['latin'] });
+const code = Source_Code_Pro({ subsets: ["latin"] });
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
   const [isMobile, setIsMobile] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
-  const { activeEmbed, handleMouseEnter, handleMouseLeave, handleClick, handleClose } = useEmbed();
+  const {
+    activeEmbed,
+    handleMouseEnter,
+    handleMouseLeave,
+    handleClick,
+    handleClose,
+  } = useEmbed();
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText("nethan.linggar@gmail.com").then(() => {
-      setShowTooltip(true);
-      setTimeout(() => setShowTooltip(false), 2000);
-    }).catch((err) => {
-      console.error("Failed to copy email: ", err);
-    });
+    navigator.clipboard
+      .writeText("nethan.linggar@gmail.com")
+      .then(() => {
+        setShowTooltip(true);
+        setTimeout(() => setShowTooltip(false), 2000);
+      })
+      .catch((err) => {
+        console.error("Failed to copy email: ", err);
+      });
   };
 
   // Check for mobile device on client-side only
@@ -41,16 +50,20 @@ export default function Intro() {
     };
 
     checkMobile();
-    window.addEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
 
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   return (
-    <section ref={ref} id="home" className="mb-28 max-w-[45rem] text-center sm:mb-0 scroll-mt-[100rem]">
-      <div className="flex items-center justify-center mb-12">
+    <section
+      ref={ref}
+      id="home"
+      className="mb-28 max-w-[45rem] scroll-mt-[100rem] text-center sm:mb-0"
+    >
+      <div className="mb-12 flex items-center justify-center">
         <div className="relative">
-          <div className="mt-3 relative">
+          <div className="relative mt-3">
             {/* Monitor */}
             <motion.div
               className="relative z-0"
@@ -80,8 +93,10 @@ export default function Intro() {
               )}
 
               {/* Inside Monitor */}
-              <div className={`${code.className} absolute inset-0 top-[-35%] flex justify-between items-center overflow-hidden px-[5%]`}>
-                <div className="flex justify-between items-center space-x-8 w-full">
+              <div
+                className={`${code.className} absolute inset-0 top-[-35%] flex items-center justify-between overflow-hidden px-[5%]`}
+              >
+                <div className="flex w-full items-center justify-between space-x-8">
                   {/* Logo Image */}
                   {!isMobile && (
                     <div className="w-[200px] text-right">
@@ -91,7 +106,7 @@ export default function Intro() {
                         width={200}
                         height={200}
                       />
-                      <p className="text-xs sm:text-sm font-medium !leading-[1.5] sm:!leading-[2.2] dark:text-black">
+                      <p className="text-xs font-medium !leading-[1.5] dark:text-black sm:text-sm sm:!leading-[2.2]">
                         <br />
                         <span>based in Jakarta,</span>
                         <br />
@@ -104,13 +119,19 @@ export default function Intro() {
 
                   {/* Heading */}
                   {isMobile ? (
-                    <div className="text-left w-full text-lg font-medium !leading-[1.2] dark:text-black">
-                      <p>a <strong>software engineer</strong> w/ a small interest in <em>machine learning</em>.</p>
+                    <div className="w-full text-left text-lg font-medium !leading-[1.2] dark:text-black">
+                      <p>
+                        a <strong>software engineer</strong> w/ a small interest
+                        in <em>machine learning</em>.
+                      </p>
                       <br />
-                      <p>also a huge <u>nerd</u> & have great taste in <u>design</u>.</p>
+                      <p>
+                        also a huge <u>nerd</u> & have great taste in{" "}
+                        <u>design</u>.
+                      </p>
                     </div>
                   ) : (
-                    <div className="text-left w-full text-[1.8rem] font-medium !leading-[1.4] dark:text-black">
+                    <div className="w-full text-left text-[1.8rem] font-medium !leading-[1.4] dark:text-black">
                       <TypeIt
                         getBeforeInit={(instance) => {
                           instance
@@ -146,7 +167,7 @@ export default function Intro() {
                             .delete(1)
                             .type(" taste in <u>design</u>")
                             .pause(250)
-                            .type(".")
+                            .type(".");
 
                           return instance;
                         }}
@@ -158,7 +179,8 @@ export default function Intro() {
             </motion.div>
           </div>
           {/* Nametag */}
-          <motion.div className="absolute z-20 top-[-3rem] sm:top-[-3.5rem] left-[-1rem]"
+          <motion.div
+            className="absolute left-[-1rem] top-[-3rem] z-20 sm:top-[-3.5rem]"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
@@ -178,7 +200,7 @@ export default function Intro() {
           </motion.div>
           {/* koss */}
           <motion.div
-            className="absolute z-20 top-[0.5rem] sm:top-[0.75rem] right-[0rem]"
+            className="absolute right-[0rem] top-[0.5rem] z-20 sm:top-[0.75rem]"
             initial={{ opacity: 0, scale: 0 }}
             animate={{
               opacity: 1,
@@ -194,11 +216,11 @@ export default function Intro() {
                 duration: 4,
                 repeat: Infinity,
                 repeatType: "reverse",
-                ease: "easeInOut"
-              }
+                ease: "easeInOut",
+              },
             }}
             style={{
-              transformOrigin: "top center"
+              transformOrigin: "top center",
             }}
           >
             <Image
@@ -214,19 +236,19 @@ export default function Intro() {
 
       {/* Buttons */}
       <motion.div
-        className="flex flex-col sm:flex-row items-center justify-center gap-3 px-4 text-lg font-medium"
+        className="flex flex-col items-center justify-center gap-3 px-4 text-lg font-medium sm:flex-row"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
       >
         <a
-          className="group bg-black text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:underline underline-offset-2 decoration-2 active:scale-105 transition dark:bg-white dark:text-black dark:hover:text-black"
+          className="group flex items-center gap-2 rounded-full bg-black px-7 py-3 text-white decoration-2 underline-offset-2 outline-none transition hover:scale-110 hover:underline focus:scale-110 active:scale-105 dark:bg-white dark:text-black dark:hover:text-black"
           href="https://drive.google.com/file/d/1HBvUFSV8CyuP3FJXbCGreTFZYwP1qD7j/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
         >
           Download CV{" "}
-          <HiDownload className="group-hover:translate-y-0.5 transition" />
+          <HiDownload className="transition group-hover:translate-y-0.5" />
         </a>
         <div className="relative">
           <SocialButton onClick={handleCopyEmail}>
@@ -235,7 +257,7 @@ export default function Intro() {
           <AnimatePresence>
             {showTooltip && (
               <motion.div
-                className="absolute top-16 -left-1/2 mb-2 center bg-black/80 text-white text-sm py-1 px-2 rounded-md w-max box-border dark:bg-white/80 dark:text-black"
+                className="center absolute -left-1/2 top-16 mb-2 box-border w-max rounded-md bg-black/80 px-2 py-1 text-sm text-white dark:bg-white/80 dark:text-black"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.5 }}
@@ -246,10 +268,18 @@ export default function Intro() {
             )}
           </AnimatePresence>
         </div>
-        <SocialButton href="https://www.linkedin.com/in/nethaneel-patricio-linggar/" target="_blank" rel="noopener noreferrer">
+        <SocialButton
+          href="https://www.linkedin.com/in/nethaneel-patricio-linggar/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <BsLinkedin />
         </SocialButton>
-        <SocialButton href="https://github.com/NethanLinggar" target="_blank" rel="noopener noreferrer">
+        <SocialButton
+          href="https://github.com/NethanLinggar"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FaGithubSquare />
         </SocialButton>
       </motion.div>

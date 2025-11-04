@@ -4,7 +4,7 @@ import { useActiveSectionContext } from "@/context/active-section-context";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import type { SectionName } from "./types";
-import { useState } from 'react';
+import { useState } from "react";
 
 export type EmbedType = "steam" | "spotify" | "letterboxd" | null;
 
@@ -20,7 +20,7 @@ export function useSectionInView(sectionName: SectionName, threshold = 0.75) {
     }
   }, [inView, setActiveSection, timeOfLastClick, sectionName]);
 
-  return { ref, inView }
+  return { ref, inView };
 }
 
 export const useEmbed = () => {
@@ -36,8 +36,10 @@ export const useEmbed = () => {
   const handleMouseLeave = () => {
     if (!clicked) {
       setTimeout(() => {
-        const embedElement = document.querySelector('[data-embed-type="' + activeEmbed + '"]');
-        if (embedElement && !embedElement.matches(':hover')) {
+        const embedElement = document.querySelector(
+          '[data-embed-type="' + activeEmbed + '"]',
+        );
+        if (embedElement && !embedElement.matches(":hover")) {
           setActiveEmbed(null);
         }
       }, 100);
@@ -65,6 +67,6 @@ export const useEmbed = () => {
     handleMouseEnter,
     handleMouseLeave,
     handleClick,
-    handleClose
+    handleClose,
   };
 };

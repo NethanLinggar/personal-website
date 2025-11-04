@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 
 interface SocialButtonProps {
   href?: string;
@@ -21,9 +21,10 @@ const SocialButton: React.FC<SocialButtonProps> = ({
   children,
   className = "",
   target,
-  rel
+  rel,
 }) => {
-  const baseClasses = "bg-dark-gray/50 p-4 text-white hover:text-gray-950 flex items-center gap-2 rounded-full hover:scale-[1.15] active:scale-105 transition cursor-pointer dark:bg-white/10 dark:text-white/80";
+  const baseClasses =
+    "bg-dark-gray/50 p-4 text-white hover:text-gray-950 flex items-center gap-2 rounded-full hover:scale-[1.15] active:scale-105 transition cursor-pointer dark:bg-white/10 dark:text-white/80";
 
   const combinedClasses = `${baseClasses} ${className}`;
 

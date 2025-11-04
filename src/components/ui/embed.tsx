@@ -10,7 +10,11 @@ interface EmbedComponentProps {
   onClose: () => void;
 }
 
-const EmbedComponent: React.FC<EmbedComponentProps> = ({ type, isVisible, onClose }) => {
+const EmbedComponent: React.FC<EmbedComponentProps> = ({
+  type,
+  isVisible,
+  onClose,
+}) => {
   const [canClose, setCanClose] = useState(false);
 
   useEffect(() => {
@@ -24,7 +28,7 @@ const EmbedComponent: React.FC<EmbedComponentProps> = ({ type, isVisible, onClos
   return (
     <motion.div
       data-embed-type={type}
-      className="fixed bottom-24 right-[0.2px] w-full flex justify-center sm:w-auto sm:bottom-8 sm:right-8 sm:justify-end z-50"
+      className="fixed bottom-24 right-[0.2px] z-50 flex w-full justify-center sm:bottom-8 sm:right-8 sm:w-auto sm:justify-end"
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{
         opacity: isVisible ? 1 : 0,
@@ -33,9 +37,9 @@ const EmbedComponent: React.FC<EmbedComponentProps> = ({ type, isVisible, onClos
       }}
       transition={{ duration: 0.2 }}
     >
-      <div className="bg-[#2B2C28] text-white bg-opacity-60 shadow-lg shadow-black/[0.5] backdrop-blur-[0.5rem] dark:bg-[#2B2C28] dark:bg-opacity-50 rounded-lg p-2 relative">
+      <div className="relative rounded-lg bg-[#2B2C28] bg-opacity-60 p-2 text-white shadow-lg shadow-black/[0.5] backdrop-blur-[0.5rem] dark:bg-[#2B2C28] dark:bg-opacity-50">
         <button
-          className="absolute top-2 right-3 text-lg"
+          className="absolute right-3 top-2 text-lg"
           onClick={() => canClose && onClose()}
           disabled={!canClose}
         >
@@ -46,7 +50,7 @@ const EmbedComponent: React.FC<EmbedComponentProps> = ({ type, isVisible, onClos
             <span className="text-md">Steam</span>
             <iframe
               src="https://gamer2810.github.io/steam-miniprofile/?interactive=true&accountId=76561198179349126"
-              className="w-[340px] h-[230px] sm:w-[342px] sm:h-[228px]"
+              className="h-[230px] w-[340px] sm:h-[228px] sm:w-[342px]"
               allow="encrypted-media"
               allowFullScreen
               title="Steam Embed"
@@ -57,7 +61,7 @@ const EmbedComponent: React.FC<EmbedComponentProps> = ({ type, isVisible, onClos
             <span className="text-md">Spotify</span>
             <iframe
               src="https://open.spotify.com/embed/playlist/0f2QMtBgbgeTAVyV7YsxMH"
-              className="w-[400px] h-[152px]"
+              className="h-[152px] w-[400px]"
               allow="encrypted-media"
               allowFullScreen
               title="Spotify Embed"
@@ -68,7 +72,7 @@ const EmbedComponent: React.FC<EmbedComponentProps> = ({ type, isVisible, onClos
             <span className="text-md">Letterboxd</span>
             <iframe
               src="https://nethanlinggar.github.io/letterboxd-miniprofile/?user=smeggy&favorites=true&unclickable=true"
-              className="w-[332px] h-[280px]"
+              className="h-[280px] w-[332px]"
               allow="encrypted-media"
               allowFullScreen
               title="Letterboxd Embed"
