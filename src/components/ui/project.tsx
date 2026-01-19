@@ -52,7 +52,7 @@ export default function Project({
           <Image
             src={imageUrl}
             alt="Project I Worked On"
-            quality={95}
+            quality={75}
             className="absolute left-1/2 top-5 w-[75%] min-w-[300px] -translate-x-1/2 transition group-hover:-translate-y-2 group-hover:scale-[1.05]"
           />
         </div>

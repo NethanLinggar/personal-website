@@ -78,7 +78,7 @@ export default function Intro() {
                 <Image
                   src={monitorBig}
                   alt="Monitor"
-                  quality={80}
+                  quality={75}
                   priority={true}
                   className="relative"
                 />
@@ -86,7 +86,7 @@ export default function Intro() {
                 <Image
                   src={monitorSmall}
                   alt="Monitor"
-                  quality={70}
+                  quality={75}
                   priority={true}
                   className="relative"
                 />
@@ -193,7 +193,7 @@ export default function Intro() {
             <Image
               src={name}
               alt="Nametag"
-              quality={80}
+              quality={75}
               priority={true}
               className="w-[20vw] min-w-[120px] max-w-[200px]"
             />
@@ -226,7 +226,7 @@ export default function Intro() {
             <Image
               src={koss}
               alt="koss"
-              quality={isMobile ? 70 : 80}
+              quality={75}
               priority={true}
               className="w-[10vw] min-w-[50px] max-w-[100px]"
             />
