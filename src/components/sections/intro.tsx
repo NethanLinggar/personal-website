@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { Source_Code_Pro } from "next/font/google";
 import { RiMailFill } from "react-icons/ri";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import { FaGithubSquare } from "react-icons/fa";
@@ -16,27 +16,26 @@ import name from "../../../public/name.png";
 import koss from "../../../public/koss.png";
 import blackOutline from "../../../public/blackOutline.png";
 import SocialButton from "../ui/social";
+import {
+  Popover,
+  PopoverButton,
+  PopoverPanel,
+  Transition,
+} from "@headlessui/react";
 
 const code = Source_Code_Pro({ subsets: ["latin"] });
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
   const [isMobile, setIsMobile] = useState(false);
-  const [showTooltip, setShowTooltip] = useState(false);
-  const {
-    activeEmbed,
-    handleMouseEnter,
-    handleMouseLeave,
-    handleClick,
-    handleClose,
-  } = useEmbed();
+  const [emailCopied, setEmailCopied] = useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard
       .writeText("nethan.linggar@gmail.com")
       .then(() => {
-        setShowTooltip(true);
-        setTimeout(() => setShowTooltip(false), 2000);
+        setEmailCopied(true);
+        setTimeout(() => setEmailCopied(false), 2000);
       })
       .catch((err) => {
         console.error("Failed to copy email: ", err);
@@ -242,7 +241,7 @@ export default function Intro() {
         transition={{ delay: 0.1 }}
       >
         <a
-          className="group flex items-center gap-2 rounded-full bg-black px-7 py-3 text-white decoration-2 underline-offset-2 outline-none transition hover:scale-110 hover:underline focus:scale-110 active:scale-105 dark:bg-white dark:text-black dark:hover:text-black"
+          className="group flex items-center gap-2 rounded-full border border-white/10 bg-black px-7 py-3 text-white decoration-2 underline-offset-2 outline-none transition-transform hover:scale-110 hover:underline focus:scale-110 active:scale-105 dark:border-white/5 dark:bg-white dark:text-black dark:hover:text-black"
           href="https://drive.google.com/file/d/1HBvUFSV8CyuP3FJXbCGreTFZYwP1qD7j/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
@@ -250,24 +249,31 @@ export default function Intro() {
           Download CV{" "}
           <HiDownload className="transition group-hover:translate-y-0.5" />
         </a>
-        <div className="relative">
-          <SocialButton onClick={handleCopyEmail}>
+
+        {/* Email Button with Popover */}
+        <Popover className="relative">
+          <PopoverButton as={SocialButton} onClick={handleCopyEmail}>
             <RiMailFill />
-          </SocialButton>
-          <AnimatePresence>
-            {showTooltip && (
-              <motion.div
-                className="center absolute -left-1/2 top-16 mb-2 box-border w-max rounded-md bg-black/80 px-2 py-1 text-sm text-white dark:bg-white/80 dark:text-black"
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.5 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              >
-                Email copied!
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+          </PopoverButton>
+
+          <Transition
+            show={emailCopied}
+            enter="transition-all duration-150 ease-out"
+            enterFrom="opacity-0 scale-75"
+            enterTo="opacity-100 scale-100"
+            leave="transition-all duration-150 ease-in"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-75"
+          >
+            <PopoverPanel
+              static
+              className="absolute left-1/2 top-16 z-10 -translate-x-1/2 whitespace-nowrap rounded-md bg-black/80 px-3 py-1.5 text-sm text-white dark:bg-white/80 dark:text-black"
+            >
+              Email copied!
+            </PopoverPanel>
+          </Transition>
+        </Popover>
+
         <SocialButton
           href="https://www.linkedin.com/in/nethaneel-patricio-linggar/"
           target="_blank"

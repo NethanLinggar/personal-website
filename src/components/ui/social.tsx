@@ -5,8 +5,6 @@ import React, { ReactNode } from "react";
 interface SocialButtonProps {
   href?: string;
   onClick?: (e: React.MouseEvent) => void;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
   children: ReactNode;
   className?: string;
   target?: string;
@@ -16,15 +14,13 @@ interface SocialButtonProps {
 const SocialButton: React.FC<SocialButtonProps> = ({
   href,
   onClick,
-  onMouseEnter,
-  onMouseLeave,
   children,
   className = "",
   target,
   rel,
 }) => {
   const baseClasses =
-    "bg-dark-gray/50 p-4 text-white hover:text-gray-950 flex items-center gap-2 rounded-full hover:scale-[1.15] active:scale-105 transition cursor-pointer dark:bg-white/10 dark:text-white/80";
+    "bg-dark-gray/50 p-4 text-white hover:text-gray-950 flex items-center gap-2 rounded-full border border-white/10 transition-transform hover:scale-110 active:scale-105 cursor-pointer dark:border-white/5 dark:bg-white/10 dark:text-white/80";
 
   const combinedClasses = `${baseClasses} ${className}`;
 
@@ -36,8 +32,6 @@ const SocialButton: React.FC<SocialButtonProps> = ({
         target={target}
         rel={rel}
         onClick={onClick}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
       >
         {children}
       </a>
@@ -45,13 +39,7 @@ const SocialButton: React.FC<SocialButtonProps> = ({
   }
 
   return (
-    <button
-      type="button"
-      className={combinedClasses}
-      onClick={onClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
+    <button type="button" className={combinedClasses} onClick={onClick}>
       {children}
     </button>
   );

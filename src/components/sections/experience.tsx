@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import SectionHeading from "../ui/section-heading";
 import {
   VerticalTimeline,
@@ -20,7 +20,7 @@ export default function Experience() {
     if (inView && !hasAnimated) {
       setHasAnimated(true);
     }
-  }, [inView]);
+  }, [inView, hasAnimated]);
 
   return (
     <section ref={ref} id="experience" className="mb-28 scroll-mt-28 sm:mb-40">
@@ -37,6 +37,10 @@ export default function Experience() {
                     ? "rgba(43, 44, 40, 0.1)"
                     : "rgba(232, 235, 234, 0.1)",
                 boxShadow: "none",
+                border:
+                  theme === "light"
+                    ? "1px solid rgba(255, 255, 255, 0.1)"
+                    : "1px solid rgba(255, 255, 255, 0.05)",
                 textAlign: "left",
                 padding: "1.3rem 2rem",
               }}

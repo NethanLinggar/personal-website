@@ -36,12 +36,14 @@ const EmbedComponent: React.FC<EmbedComponentProps> = ({
         pointerEvents: isVisible ? "auto" : "none",
       }}
       transition={{ duration: 0.2 }}
+      style={{ willChange: "transform, opacity" }}
     >
-      <div className="relative rounded-lg bg-[#2B2C28] bg-opacity-60 p-2 text-white shadow-lg shadow-black/[0.5] backdrop-blur-[0.5rem] dark:bg-[#2B2C28] dark:bg-opacity-50">
+      <div className="relative rounded-lg border border-white/10 bg-[#2B2C28]/60 p-2 text-white shadow-lg shadow-black/50 backdrop-blur-sm dark:border-white/5 dark:bg-[#2B2C28]/50">
         <button
-          className="absolute right-3 top-2 text-lg"
+          className="hover:text-gray-300 absolute right-3 top-2 text-lg transition-colors"
           onClick={() => canClose && onClose()}
           disabled={!canClose}
+          aria-label="Close"
         >
           [x]
         </button>

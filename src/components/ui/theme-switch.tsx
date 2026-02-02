@@ -3,16 +3,20 @@
 import { useTheme } from "@/context/theme-context";
 import React from "react";
 import { BsMoon, BsSun } from "react-icons/bs";
+import { Switch } from "@headlessui/react";
 
 export default function ThemeSwitch() {
   const { theme, toggleTheme } = useTheme();
+  const isDark = theme === "dark";
 
   return (
-    <button
-      className="dark:bg-gray-950 fixed bottom-5 right-5 flex h-[3rem] w-[3rem] items-center justify-center rounded-full border border-white border-opacity-40 bg-white bg-opacity-80 shadow-2xl backdrop-blur-[0.5rem] transition-all hover:scale-[1.15rem] active:scale-105"
-      onClick={toggleTheme}
+    <Switch
+      checked={isDark}
+      onChange={toggleTheme}
+      className="dark:bg-gray-950/30 fixed bottom-5 right-5 flex h-[3rem] w-[3rem] items-center justify-center rounded-full border border-white/10 bg-white/40 shadow-2xl backdrop-blur-md transition-all hover:scale-110 active:scale-105 dark:border-white/5"
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
-      {theme === "light" ? <BsSun /> : <BsMoon />}
-    </button>
+      {isDark ? <BsMoon className="h-5 w-5" /> : <BsSun className="h-5 w-5" />}
+    </Switch>
   );
 }
