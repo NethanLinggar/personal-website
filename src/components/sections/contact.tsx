@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "motion/react";
 import { RiMailFill } from "react-icons/ri";
 import { BsLinkedin } from "react-icons/bs";
 import { FaGithubSquare, FaInstagramSquare } from "react-icons/fa";
-import SocialButton from "../ui/social";
+import SocialButton from "../ui/social-button";
 import {
   Popover,
   PopoverButton,
@@ -48,9 +48,12 @@ export default function Contact() {
         transition={{ delay: 0.1 }}
         style={{ willChange: "transform, opacity" }}
       >
-        {/* Email Button with Popover */}
         <Popover className="relative">
-          <PopoverButton as={SocialButton} onClick={handleCopyEmail}>
+          <PopoverButton
+            as={SocialButton}
+            onClick={handleCopyEmail}
+            platform="email"
+          >
             <RiMailFill />
           </PopoverButton>
 
@@ -76,6 +79,7 @@ export default function Contact() {
           href="https://www.linkedin.com/in/nethaneel-patricio-linggar/"
           target="_blank"
           rel="noopener noreferrer"
+          platform="linkedin"
         >
           <BsLinkedin />
         </SocialButton>
@@ -84,6 +88,7 @@ export default function Contact() {
           href="https://github.com/NethanLinggar"
           target="_blank"
           rel="noopener noreferrer"
+          platform="github"
         >
           <FaGithubSquare />
         </SocialButton>
@@ -92,6 +97,7 @@ export default function Contact() {
           href="https://www.instagram.com/nethanpat/"
           target="_blank"
           rel="noopener noreferrer"
+          platform="instagram"
         >
           <FaInstagramSquare />
         </SocialButton>

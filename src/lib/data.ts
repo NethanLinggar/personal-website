@@ -117,26 +117,60 @@ export const projectsData = [
   },
 ] as const;
 
-export const skillsData = [
-  "C++",
-  "Java",
-  "TypeScript",
-  "JavaScript",
-  "Kotlin",
-  "MySQL",
-  "PosgreSQL",
-  "Python",
-  "Arduino",
-  "React",
-  "Next.js",
-  "Node.js",
-  "Express.js",
-  "Golang",
-  "Android",
-  "Docker",
-  "Bash / Shell Scripting",
-  "Agile Methods (Scrum)",
-  "Project Management (JIRA, Trello)",
-  "Tensorflow",
-  "Embedded Systems",
+export type SkillCategory =
+  | "Programming Languages"
+  | "Frontend"
+  | "Backend"
+  | "Mobile"
+  | "Database"
+  | "Machine Learning/AI"
+  | "Embedded/IoT"
+  | "DevOps/Tools"
+  | "Project Management";
+
+export interface Skill {
+  name: string;
+  category: SkillCategory;
+}
+
+// I understand the categorizing is attrocious but it's style over substance this time
+export const skillsData: Skill[] = [
+  // Programming Languages
+  { name: "TypeScript", category: "Programming Languages" },
+  { name: "JavaScript", category: "Programming Languages" },
+
+  // Mobile
+  { name: "Java", category: "Mobile" },
+  { name: "Kotlin", category: "Mobile" },
+  { name: "Flutter", category: "Mobile" },
+
+  // Frontend
+  { name: "React", category: "Frontend" },
+  { name: "Next.js", category: "Frontend" },
+
+  // Backend
+  { name: "Golang", category: "Backend" },
+  { name: "Node.js", category: "Backend" },
+  { name: "Express.js", category: "Backend" },
+
+  // Database
+  { name: "MySQL", category: "Database" },
+  { name: "PostgreSQL", category: "Database" },
+
+  // Machine Learning/AI
+  { name: "Python", category: "Machine Learning/AI" },
+  { name: "Tensorflow", category: "Machine Learning/AI" },
+
+  // Embedded/IoT
+  { name: "C/ C++", category: "Programming Languages" },
+  { name: "Arduino", category: "Embedded/IoT" },
+  { name: "Embedded Systems", category: "Embedded/IoT" },
+
+  // DevOps/Tools
+  { name: "Docker", category: "DevOps/Tools" },
+  { name: "Bash / Shell Scripting", category: "DevOps/Tools" },
+
+  // Project Management
+  { name: "Agile Methods (Scrum)", category: "Project Management" },
+  { name: "Project Management (JIRA, Trello)", category: "Project Management" },
 ] as const;

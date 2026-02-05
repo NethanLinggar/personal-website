@@ -1,10 +1,32 @@
 "use client";
 
-import React from "react";
 import SectionHeading from "../ui/section-heading";
-import { skillsData } from "@/lib/data";
+import { skillsData, type SkillCategory } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
 import Marquee from "react-fast-marquee";
+
+function getCategoryColorClass(category: SkillCategory): string {
+  switch (category) {
+    case "Programming Languages":
+      return "border-blue-500/30 hover:bg-blue-500 dark:border-blue-400/30 dark:hover:bg-blue-400 hover:text-white dark:hover:text-black";
+    case "Frontend":
+      return "border-purple-500/30 hover:bg-purple-500 dark:border-purple-400/30 dark:hover:bg-purple-400 hover:text-white dark:hover:text-black";
+    case "Backend":
+      return "border-green-500/30 hover:bg-green-500 dark:border-green-400/30 dark:hover:bg-green-400 hover:text-white dark:hover:text-black";
+    case "Mobile":
+      return "border-orange-500/30 hover:bg-orange-500 dark:border-orange-400/30 dark:hover:bg-orange-400 hover:text-white dark:hover:text-black";
+    case "Database":
+      return "border-cyan-500/30 hover:bg-cyan-500 dark:border-cyan-400/30 dark:hover:bg-cyan-400 hover:text-white dark:hover:text-black";
+    case "Machine Learning/AI":
+      return "border-pink-500/30 hover:bg-pink-500 dark:border-pink-400/30 dark:hover:bg-pink-400 hover:text-white dark:hover:text-black";
+    case "Embedded/IoT":
+      return "border-amber-500/30 hover:bg-amber-500 dark:border-amber-400/30 dark:hover:bg-amber-400 hover:text-white dark:hover:text-black";
+    case "DevOps/Tools":
+      return "border-slate-500/30 hover:bg-slate-500 dark:border-slate-400/30 dark:hover:bg-slate-400 hover:text-white dark:hover:text-black";
+    case "Project Management":
+      return "border-indigo-500/30 hover:bg-indigo-500 dark:border-indigo-400/30 dark:hover:bg-indigo-400 hover:text-white dark:hover:text-black";
+  }
+}
 
 export default function Skills() {
   const { ref } = useSectionInView("Skills", 0.5);
@@ -33,15 +55,16 @@ export default function Skills() {
             <Marquee
               autoFill={true}
               gradient={false}
+              pauseOnHover={true}
               speed={20}
               direction={rowIndex % 2 === 0 ? "left" : "right"}
             >
               {rowSkills.map((skill, index) => (
                 <div
                   key={index}
-                  className="text-gray-800 mx-2 inline-block rounded-xl border border-white/10 bg-light-gray/10 px-5 py-3 text-base transition-colors hover:bg-black/90 hover:text-white dark:border-white/5 dark:bg-white/10 dark:text-white dark:hover:bg-white/90 dark:hover:text-black sm:text-lg"
+                  className={`text-gray-800 mx-2 inline-block rounded-xl border bg-light-gray/10 px-5 py-3 text-base transition-colors dark:bg-white/10 dark:text-white sm:text-lg ${getCategoryColorClass(skill.category)}`}
                 >
-                  {skill}
+                  {skill.name}
                 </div>
               ))}
             </Marquee>

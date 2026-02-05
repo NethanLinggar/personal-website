@@ -7,7 +7,7 @@ import { RiMailFill } from "react-icons/ri";
 import { motion } from "motion/react";
 import { BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
-import { FaGithubSquare } from "react-icons/fa";
+import { FaGithubSquare, FaInstagramSquare } from "react-icons/fa";
 import { useSectionInView, useEmbed } from "@/lib/hooks";
 import TypeIt from "typeit-react";
 import monitorBig from "../../../public/monitorBig.png";
@@ -15,7 +15,7 @@ import monitorSmall from "../../../public/monitorSmall.png";
 import name from "../../../public/name.png";
 import koss from "../../../public/koss.png";
 import blackOutline from "../../../public/blackOutline.png";
-import SocialButton from "../ui/social";
+import SocialButton from "../ui/social-button";
 import {
   Popover,
   PopoverButton,
@@ -235,7 +235,7 @@ export default function Intro() {
 
       {/* Buttons */}
       <motion.div
-        className="flex flex-col items-center justify-center gap-3 px-4 text-lg font-medium sm:flex-row"
+        className="flex flex-col items-center justify-center gap-10 px-4 text-lg font-medium"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
@@ -246,48 +246,63 @@ export default function Intro() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Download CV{" "}
+          Open CV{" "}
           <HiDownload className="transition group-hover:translate-y-0.5" />
         </a>
-
-        {/* Email Button with Popover */}
-        <Popover className="relative">
-          <PopoverButton as={SocialButton} onClick={handleCopyEmail}>
-            <RiMailFill />
-          </PopoverButton>
-
-          <Transition
-            show={emailCopied}
-            enter="transition-all duration-150 ease-out"
-            enterFrom="opacity-0 scale-75"
-            enterTo="opacity-100 scale-100"
-            leave="transition-all duration-150 ease-in"
-            leaveFrom="opacity-100 scale-100"
-            leaveTo="opacity-0 scale-75"
-          >
-            <PopoverPanel
-              static
-              className="absolute left-1/2 top-16 z-10 -translate-x-1/2 whitespace-nowrap rounded-md bg-black/80 px-3 py-1.5 text-sm text-white dark:bg-white/80 dark:text-black"
+        <div className="flex flex-row gap-6">
+          <Popover className="relative">
+            <PopoverButton
+              as={SocialButton}
+              onClick={handleCopyEmail}
+              platform="email"
             >
-              Email copied!
-            </PopoverPanel>
-          </Transition>
-        </Popover>
+              <RiMailFill />
+            </PopoverButton>
+            <Transition
+              show={emailCopied}
+              enter="transition-all duration-150 ease-out"
+              enterFrom="opacity-0 scale-75"
+              enterTo="opacity-100 scale-100"
+              leave="transition-all duration-150 ease-in"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-75"
+            >
+              <PopoverPanel
+                static
+                className="absolute left-1/2 top-16 z-10 -translate-x-1/2 whitespace-nowrap rounded-md bg-black/80 px-3 py-1.5 text-sm text-white dark:bg-white/80 dark:text-black"
+              >
+                Email copied!
+              </PopoverPanel>
+            </Transition>
+          </Popover>
 
-        <SocialButton
-          href="https://www.linkedin.com/in/nethaneel-patricio-linggar/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <BsLinkedin />
-        </SocialButton>
-        <SocialButton
-          href="https://github.com/NethanLinggar"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaGithubSquare />
-        </SocialButton>
+          <SocialButton
+            href="https://www.linkedin.com/in/nethaneel-patricio-linggar/"
+            target="_blank"
+            rel="noopener noreferrer"
+            platform="linkedin"
+          >
+            <BsLinkedin />
+          </SocialButton>
+
+          <SocialButton
+            href="https://github.com/NethanLinggar"
+            target="_blank"
+            rel="noopener noreferrer"
+            platform="github"
+          >
+            <FaGithubSquare />
+          </SocialButton>
+
+          <SocialButton
+            href="https://www.instagram.com/nethanpat/"
+            target="_blank"
+            rel="noopener noreferrer"
+            platform="instagram"
+          >
+            <FaInstagramSquare />
+          </SocialButton>
+        </div>
       </motion.div>
     </section>
   );

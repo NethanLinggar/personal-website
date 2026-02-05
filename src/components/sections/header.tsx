@@ -67,7 +67,7 @@ export default function Header() {
               >
                 <Link
                   className={clsx(
-                    "flex w-full items-center justify-center px-3 py-3 transition-colors dark:text-[#E8EBEA]",
+                    "flex w-full items-center justify-center px-3 py-[0.725rem] transition-colors dark:text-[#E8EBEA] sm:py-3",
                     {
                       "text-[#0A0A0A] dark:!text-[#0A0A0A]":
                         activeSection === link.name,
