@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
 import SectionHeading from "../ui/section-heading";
 import { motion } from "motion/react";
 import { useSectionInView, useEmbed } from "@/lib/hooks";
-import EmbedComponent from "../ui/embed";
+import EmbedModal from "../ui/embed-modal";
 
 export default function About() {
   const { ref } = useSectionInView("About");
@@ -31,23 +30,20 @@ export default function About() {
         Hi! I'm <span className="font-medium">Nethan</span>, a{" "}
         <span className="font-medium">Software Engineer</span>. As a{" "}
         <span className="italic">Computer Science</span> graduate, I'm currently
-        building a career for myself in{" "}
-        <span className="font-medium">Frontend Development</span>. I've gained
-        solid experience in developing software (like{" "}
-        <span className="italic">web apps</span> or even{" "}
-        <span className="italic">Android apps</span>) integrated with{" "}
+        building a career for myself by being a{" "}
+        <span className="font-medium">Full Stack Developer</span>. I've gained
+        solid experience in creating software (whether it's{" "}
+        <span className="italic">web</span> or{" "}
+        <span className="italic">mobile apps</span>) integrated with{" "}
         <span className="font-medium">machine learning capabilities</span>{" "}
-        throughout my education and career. I've also recently got into tweaking{" "}
-        <span className="italic">microcontrollers</span>, like ESP32s.
+        throughout my education and early career. I've also recently got into
+        tweaking <span className="italic">microcontrollers</span>, like ESP32s.
       </p>
 
       <p className="mb-3">
         Ever since I was a kid, I've always{" "}
-        <span className="italic">loved building stuff</span>. Whether it was{" "}
-        <span className="italic">LEGOs</span>,{" "}
-        <span className="italic">robots</span>, or even just{" "}
-        <span className="italic">plain ol' drawing</span>, I loved it. It was a
-        way for me to <span className="font-medium">express myself</span> and{" "}
+        <span className="italic">loved building stuff</span>. It was a way for
+        me to <span className="font-medium">express myself</span> and{" "}
         <span className="font-medium">share experiences with others</span>. Now,
         I hope the stuff that I build (whether it be software or not) can be{" "}
         <span className="font-medium">meaningful and useful</span> for others,
@@ -100,17 +96,17 @@ export default function About() {
         <span className="italic">meet</span> in person.
       </p>
 
-      <EmbedComponent
+      <EmbedModal
         type="steam"
         isVisible={activeEmbed === "steam"}
         onClose={handleClose}
       />
-      <EmbedComponent
+      <EmbedModal
         type="spotify"
         isVisible={activeEmbed === "spotify"}
         onClose={handleClose}
       />
-      <EmbedComponent
+      <EmbedModal
         type="letterboxd"
         isVisible={activeEmbed === "letterboxd"}
         onClose={handleClose}

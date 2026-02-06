@@ -6,9 +6,12 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
 import ProjectModal from "./project-modal";
 
-type ProjectProps = (typeof projectsData)[number];
+type ProjectCardProps = (typeof projectsData)[number] & {
+  canOpenModal: boolean;
+  onModalClose: () => void;
+};
 
-export default function Project({
+export default function ProjectCard({
   title,
   description,
   fullDescription,
@@ -17,7 +20,9 @@ export default function Project({
   images,
   date,
   team,
-}: ProjectProps) {
+  canOpenModal,
+  onModalClose,
+}: ProjectCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -27,6 +32,17 @@ export default function Project({
   const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
 
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpen = () => {
+    if (canOpenModal) {
+      setIsOpen(true);
+    }
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    onModalClose();
+  };
 
   return (
     <>
@@ -40,7 +56,7 @@ export default function Project({
         className="group mb-5 last:mb-0 sm:mb-8"
       >
         <section
-          onClick={() => setIsOpen(true)}
+          onClick={handleOpen}
           className="relative max-w-[62rem] cursor-pointer overflow-visible rounded-lg transition-colors sm:h-[20rem] sm:pr-8"
         >
           {/* Image for mobile - behind the card, peeking at top */}
@@ -88,7 +104,7 @@ export default function Project({
 
       <ProjectModal
         isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
+        onClose={handleClose}
         title={title}
         description={description}
         fullDescription={fullDescription}
