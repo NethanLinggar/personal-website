@@ -134,7 +134,7 @@ export interface Skill {
 }
 
 // I understand the categorizing is attrocious but it's style over substance this time
-export const skillsData: Skill[] = [
+export const skillsData: readonly Skill[] = [
   // Programming Languages
   { name: "TypeScript", category: "Programming Languages" },
   { name: "JavaScript", category: "Programming Languages" },
