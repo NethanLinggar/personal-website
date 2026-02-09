@@ -41,150 +41,12 @@ export default function ProjectModal({
         aria-hidden="true"
       />
 
-      {/* Container */}
-      <div className="fixed inset-0 flex items-end justify-center sm:items-start sm:p-4 sm:pt-24">
-        {/* Mobile: Slide up animation */}
+      {/* Container - centered for all screen sizes */}
+      <div className="fixed inset-0 flex items-center justify-center p-4">
         <motion.div
           initial={{
             opacity: 0,
-            y: "100%",
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          exit={{
-            opacity: 0,
-            y: "100%",
-          }}
-          transition={{
-            duration: 0.3,
-            ease: "easeOut",
-          }}
-          className="w-full max-w-4xl sm:hidden"
-        >
-          <DialogPanel className="w-full transform overflow-hidden rounded-t-2xl bg-white shadow-xl dark:bg-light-gray">
-            {/* Header */}
-            <div className="sticky top-0 z-10 flex items-center justify-between bg-white px-6 py-4 dark:bg-light-gray">
-              <DialogTitle className="text-2xl font-semibold text-dark-gray dark:text-white">
-                {title}
-              </DialogTitle>
-              <button
-                onClick={onClose}
-                className="rounded-lg p-2 text-dark-gray/60 transition-colors hover:bg-light-gray/10 dark:text-white/60 dark:hover:bg-dark-gray"
-                aria-label="Close modal"
-              >
-                <XMarkIcon className="h-6 w-6" />
-              </button>
-            </div>
-
-            {/* Content */}
-            <div
-              className="modal-content max-h-[75vh] overflow-y-auto px-6 py-6 pb-28"
-              style={
-                {
-                  scrollbarWidth: "thin",
-                  scrollbarColor:
-                    "var(--scrollbar-thumb) var(--scrollbar-track)",
-                } as React.CSSProperties & {
-                  scrollbarWidth: string;
-                  scrollbarColor: string;
-                }
-              }
-            >
-              {/* Project Info */}
-              {(date || team) && (
-                <div className="mb-6 flex flex-wrap gap-4 text-sm text-dark-gray/70 dark:text-white/70">
-                  {date && (
-                    <div>
-                      <span className="font-semibold text-dark-gray dark:text-white">
-                        Date:
-                      </span>{" "}
-                      {date}
-                    </div>
-                  )}
-                  {team && (
-                    <div>
-                      <span className="font-semibold text-dark-gray dark:text-white">
-                        Team:
-                      </span>{" "}
-                      {team}
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* Main Image */}
-              <div className="mb-6 overflow-hidden rounded-lg bg-light-gray/10 dark:bg-dark-gray">
-                <Image
-                  src={imageUrl}
-                  alt={title}
-                  quality={75}
-                  className="mx-auto w-2/3 max-w-2xl sm:w-[45%] sm:pt-2"
-                />
-              </div>
-
-              {/* Full Description */}
-              {fullDescription && (
-                <div className="mb-6">
-                  <h3 className="mb-3 text-lg font-semibold text-dark-gray dark:text-white">
-                    About this project
-                  </h3>
-                  <p className="whitespace-pre-line leading-relaxed text-dark-gray/80 dark:text-white/80">
-                    {fullDescription}
-                  </p>
-                </div>
-              )}
-
-              {/* Additional Images */}
-              {images && images.length > 0 && (
-                <div className="mb-6">
-                  <h3 className="mb-3 text-lg font-semibold text-dark-gray dark:text-white">
-                    Gallery
-                  </h3>
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    {images.map((img, index) => (
-                      <div
-                        key={index}
-                        className="overflow-hidden rounded-lg bg-light-gray/10 dark:bg-dark-gray"
-                      >
-                        <Image
-                          src={img}
-                          alt={`${title} - Image ${index + 1}`}
-                          quality={95}
-                          className="w-full"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Tags */}
-              <div>
-                <h3 className="mb-3 text-lg font-semibold text-dark-gray dark:text-white">
-                  Technologies
-                </h3>
-                <ul className="flex flex-wrap gap-2">
-                  {tags.map((tag, index) => (
-                    <li
-                      className="rounded-full border border-light-gray/30 bg-light-gray/10 px-3 py-1 text-sm text-dark-gray dark:border-white/10 dark:bg-dark-gray dark:text-white/80"
-                      key={index}
-                    >
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </DialogPanel>
-        </motion.div>
-
-        {/* Desktop: Scale/pop animation */}
-        <motion.div
-          initial={{
-            opacity: 0,
-            scale: 0.8,
+            scale: 0.95,
           }}
           animate={{
             opacity: 1,
@@ -192,58 +54,47 @@ export default function ProjectModal({
           }}
           exit={{
             opacity: 0,
-            scale: 0.8,
+            scale: 0.95,
           }}
           transition={{
             duration: 0.2,
           }}
-          className="hidden w-full max-w-4xl sm:block"
+          className="flex max-h-[calc(100vh-10rem)] w-full max-w-4xl flex-col pb-5 sm:max-h-[90vh] sm:pb-0 sm:pt-14"
         >
-          <DialogPanel className="w-full transform overflow-hidden rounded-2xl bg-white shadow-xl dark:bg-light-gray sm:max-h-[calc(100vh-5rem)]">
+          <DialogPanel className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#2B2C28]/50 shadow-lg shadow-black/50 backdrop-blur-md">
             {/* Header */}
-            <div className="sticky top-0 z-10 flex items-center justify-between bg-white px-6 py-4 dark:bg-light-gray">
-              <DialogTitle className="text-2xl font-semibold text-dark-gray dark:text-white">
+            <div className="flex flex-shrink-0 items-center justify-between bg-transparent px-6 pb-3 pt-5">
+              <DialogTitle className="text-2xl font-semibold text-white">
                 {title}
               </DialogTitle>
               <button
                 onClick={onClose}
-                className="rounded-lg p-2 text-dark-gray/60 transition-colors hover:bg-light-gray/10 dark:text-white/60 dark:hover:bg-dark-gray"
+                className="rounded-lg p-1 text-white/60 transition-colors hover:text-white/90"
                 aria-label="Close modal"
               >
-                <XMarkIcon className="h-6 w-6" />
+                <XMarkIcon className="h-5 w-5" />
               </button>
             </div>
 
             {/* Content */}
             <div
-              className="modal-content max-h-[calc(100vh-13rem)] overflow-y-auto px-6 py-6 pb-6"
-              style={
-                {
-                  scrollbarWidth: "thin",
-                  scrollbarColor:
-                    "var(--scrollbar-thumb) var(--scrollbar-track)",
-                } as React.CSSProperties & {
-                  scrollbarWidth: string;
-                  scrollbarColor: string;
-                }
-              }
+              className="modal-content flex-1 overflow-y-auto px-6 py-6"
+              style={{
+                WebkitOverflowScrolling: "touch",
+              }}
             >
               {/* Project Info */}
               {(date || team) && (
-                <div className="mb-6 flex flex-wrap gap-4 text-sm text-dark-gray/70 dark:text-white/70">
+                <div className="mb-6 flex flex-wrap gap-4 text-sm text-white/70">
                   {date && (
                     <div>
-                      <span className="font-semibold text-dark-gray dark:text-white">
-                        Date:
-                      </span>{" "}
+                      <span className="font-semibold text-white">Date:</span>{" "}
                       {date}
                     </div>
                   )}
                   {team && (
                     <div>
-                      <span className="font-semibold text-dark-gray dark:text-white">
-                        Team:
-                      </span>{" "}
+                      <span className="font-semibold text-white">Team:</span>{" "}
                       {team}
                     </div>
                   )}
@@ -251,7 +102,7 @@ export default function ProjectModal({
               )}
 
               {/* Main Image */}
-              <div className="mb-6 overflow-hidden rounded-lg bg-light-gray/10 dark:bg-dark-gray">
+              <div className="mb-6 overflow-hidden rounded-lg bg-black/20">
                 <Image
                   src={imageUrl}
                   alt={title}
@@ -263,10 +114,10 @@ export default function ProjectModal({
               {/* Full Description */}
               {fullDescription && (
                 <div className="mb-6">
-                  <h3 className="mb-3 text-lg font-semibold text-dark-gray dark:text-white">
+                  <h3 className="mb-3 text-lg font-semibold text-white">
                     About this project
                   </h3>
-                  <p className="whitespace-pre-line leading-relaxed text-dark-gray/80 dark:text-white/80">
+                  <p className="whitespace-pre-line leading-relaxed text-white/80">
                     {fullDescription}
                   </p>
                 </div>
@@ -275,14 +126,14 @@ export default function ProjectModal({
               {/* Additional Images */}
               {images && images.length > 0 && (
                 <div className="mb-6">
-                  <h3 className="mb-3 text-lg font-semibold text-dark-gray dark:text-white">
+                  <h3 className="mb-3 text-lg font-semibold text-white">
                     Gallery
                   </h3>
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     {images.map((img, index) => (
                       <div
                         key={index}
-                        className="overflow-hidden rounded-lg bg-light-gray/10 dark:bg-dark-gray"
+                        className="overflow-hidden rounded-lg bg-black/20"
                       >
                         <Image
                           src={img}
@@ -298,13 +149,13 @@ export default function ProjectModal({
 
               {/* Tags */}
               <div>
-                <h3 className="mb-3 text-lg font-semibold text-dark-gray dark:text-white">
+                <h3 className="mb-3 text-lg font-semibold text-white">
                   Technologies
                 </h3>
                 <ul className="flex flex-wrap gap-2">
                   {tags.map((tag, index) => (
                     <li
-                      className="rounded-full border border-light-gray/30 bg-light-gray/10 px-3 py-1 text-sm text-dark-gray dark:border-white/10 dark:bg-dark-gray dark:text-white/80"
+                      className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-sm text-white/80"
                       key={index}
                     >
                       {tag}
@@ -316,37 +167,24 @@ export default function ProjectModal({
           </DialogPanel>
         </motion.div>
       </div>
+
       <style jsx>{`
-        .modal-content {
-          --scrollbar-track: #e8ebea;
-          --scrollbar-thumb: #2b2c28;
-        }
-
-        :global(.dark) .modal-content {
-          --scrollbar-track: #2b2c28;
-          --scrollbar-thumb: #151515;
-        }
-
         .modal-content::-webkit-scrollbar {
           width: 8px;
         }
 
         .modal-content::-webkit-scrollbar-track {
-          background: var(--scrollbar-track);
+          background: rgba(0, 0, 0, 0.2);
           border-radius: 4px;
         }
 
         .modal-content::-webkit-scrollbar-thumb {
-          background: var(--scrollbar-thumb);
+          background: rgba(255, 255, 255, 0.2);
           border-radius: 4px;
         }
 
         .modal-content::-webkit-scrollbar-thumb:hover {
-          background: #151515;
-        }
-
-        :global(.dark) .modal-content::-webkit-scrollbar-thumb:hover {
-          background: #0a0a0a;
+          background: rgba(255, 255, 255, 0.3);
         }
 
         .modal-content::-webkit-scrollbar-button {
