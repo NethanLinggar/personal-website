@@ -33,36 +33,43 @@ export const links = [
 export const experiencesData = [
   {
     title: "Developer Consultant",
-    location: "PT Phoenix Solusi Indonesia",
+    company: "PT Phoenix Solusi Indonesia",
     description:
       "Full time at the telematics provider company. Working with Fleet Management Systems and build supporting apps.",
     icon: React.createElement(CgWorkAlt),
     date: "Oct 2024 - Now",
+    location: "Jakarta, Indonesia",
+    locationType: "Hybrid",
   },
   {
-    title: "Computer Science Graduate",
-    location: "Sepuluh Nopember Institute of Technology",
+    title: "Computer Science Undergraduate",
+    company: "Sepuluh Nopember Institute of Technology",
     description:
       "Graduated cum laude with a 3.67 GPA. Final thesis is a Facial Recognition Attendance System.",
     icon: React.createElement(LuGraduationCap),
-    date: "Aug 2020 - Aug 2024",
+    date: "Aug 2024",
+    location: "Surabaya, Indonesia",
   },
   {
     title: "Junior Software Developer",
-    location: "PT Bispro Consulting",
+    company: "PT Bispro Consulting",
     description:
       "Hybrid contract for 3 months at the consulting firm. Worked with M-Files, a document management platform.",
     icon: React.createElement(CgWorkAlt),
     date: "Dec 2023 - Feb 2024",
+    location: "Jakarta, Indonesia",
+    locationType: "Hybrid",
   },
   {
     title: "Frontend Developer",
-    location:
+    company:
       "Direktorat Pengembangan Teknologi dan Sistem Informasi (DPTSI) - ITS",
     description:
       "On-site contract for 4 months as a Frontend Developer. Worked on myITS StudentConnect.",
     icon: React.createElement(FaReact),
     date: "Sep 2023 - Dec 2023",
+    location: "Surabaya, Indonesia",
+    locationType: "On-site",
   },
 ] as const;
 

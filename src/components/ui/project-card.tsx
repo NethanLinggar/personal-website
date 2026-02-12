@@ -71,7 +71,7 @@ export default function ProjectCard({
             </div>
           </div>
 
-          <div className="absolute inset-0 top-[16rem] z-10 rounded-lg border border-white/5 bg-light-gray/20 transition-colors group-hover:bg-light-gray/10 dark:border-white/5 dark:bg-white/10 dark:group-hover:bg-white/20 sm:top-8"></div>
+          <div className="absolute inset-0 top-[16rem] z-10 rounded-2xl border border-white/5 bg-light-gray/20 transition-colors group-hover:bg-light-gray/10 dark:border-white/5 dark:bg-white/10 dark:group-hover:bg-white/20 sm:top-8"></div>
 
           <div className="relative z-10 flex h-full flex-col px-5 pb-4 pt-[17rem] sm:max-w-[50%] sm:pb-7 sm:pl-10 sm:pr-2 sm:pt-16 sm:group-even:ml-[50%]">
             <h3 className="text-2xl font-semibold dark:text-white">{title}</h3>

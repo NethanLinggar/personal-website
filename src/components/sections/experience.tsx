@@ -1,71 +1,80 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import SectionHeading from "../ui/section-heading";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
+} from "../ui/vertical-timeline";
 import { experiencesData } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
 import { useTheme } from "@/context/theme-context";
 
 export default function Experience() {
-  const { ref, inView } = useSectionInView("Experience", 0.2);
+  const { ref } = useSectionInView("Experience", 0.2);
   const { theme } = useTheme();
-
-  const [hasAnimated, setHasAnimated] = useState(false);
-  useEffect(() => {
-    if (inView && !hasAnimated) {
-      setHasAnimated(true);
-    }
-  }, [inView, hasAnimated]);
 
   return (
     <section ref={ref} id="experience" className="mb-28 scroll-mt-28 sm:mb-40">
       <SectionHeading>My Experience</SectionHeading>
-      <VerticalTimeline lineColor="">
+      <VerticalTimeline>
         {experiencesData.map((item, index) => (
           <React.Fragment key={index}>
             <VerticalTimelineElement
-              visible={hasAnimated ? true : inView}
-              className="sm:odd:!pr-4 sm:even:!pl-4"
+              visible={true}
+              isFirst={index === 0}
+              lineColor={
+                theme === "light"
+                  ? "rgba(43, 44, 40, 0.2)"
+                  : "rgba(232, 235, 234, 0.2)"
+              }
               contentStyle={{
                 background:
                   theme === "light"
-                    ? "rgba(43, 44, 40, 0.1)"
+                    ? "rgba(43, 44, 40, 0.2)"
                     : "rgba(232, 235, 234, 0.1)",
                 boxShadow: "none",
                 border:
                   theme === "light"
-                    ? "1px solid rgba(255, 255, 255, 0.1)"
+                    ? "1px solid rgba(255, 255, 255, 0.05)"
                     : "1px solid rgba(255, 255, 255, 0.05)",
                 textAlign: "left",
-                padding: "1.3rem 2rem",
+                padding: "1.75rem 2rem",
+                borderRadius: "0.5rem",
               }}
-              contentArrowStyle={{
-                borderRight:
-                  theme === "light"
-                    ? "0.4rem solid rgba(43, 44, 40, 0.1)"
-                    : "0.4rem solid rgba(232, 235, 234, 0.1)",
-              }}
-              date={item.date}
-              dateClassName="sm:!ml-6 sm:!mr-6"
               icon={item.icon}
               iconStyle={{
-                background: theme === "light" ? "#E8EBEA" : "#0A0A0A",
+                background:
+                  theme === "light"
+                    ? "rgba(43, 44, 40, 0.2)"
+                    : "rgba(232, 235, 234, 0.1)",
                 color: theme === "light" ? "#0A0A0A" : "#E8EBEA",
                 fontSize: "1.5rem",
-                boxShadow:
-                  theme === "light" ? "0 0 0 2px #151515" : "0 0 0 2px #2B2C28",
+                border:
+                  theme === "light"
+                    ? "1px solid rgba(255, 255, 255, 0.05)"
+                    : "1px solid rgba(255, 255, 255, 0.05)",
+                boxShadow: "none",
               }}
             >
-              <h3 className="font-bold capitalize dark:text-white">
+              <h3 className="text-2xl font-semibold dark:text-white">
                 {item.title}
               </h3>
-              <p className="!mt-0 font-normal">{item.location}</p>
-              <p className="text-gray-700 !mt-1 !font-normal dark:text-white/75">
+              <p className="!mt-1 font-semibold text-dark-gray dark:text-white/70">
+                {item.company}
+              </p>
+              <div className="!mt-2 flex flex-wrap gap-x-3 text-sm text-dark-gray dark:text-white/70">
+                <p>{item.date}</p>
+                <span>•</span>
+                <p>{item.location}</p>
+                {"locationType" in item && item.locationType && (
+                  <>
+                    <span>•</span>
+                    <p>{item.locationType}</p>
+                  </>
+                )}
+              </div>
+              <p className="!mt-4 text-sm leading-relaxed text-dark-gray dark:text-white/70 sm:text-base sm:leading-relaxed">
                 {item.description}
               </p>
             </VerticalTimelineElement>
