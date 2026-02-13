@@ -39,7 +39,7 @@ export default function Experience() {
                     ? "1px solid rgba(255, 255, 255, 0.05)"
                     : "1px solid rgba(255, 255, 255, 0.05)",
                 textAlign: "left",
-                padding: "1.75rem 2rem",
+                padding: "1.25rem 1rem",
                 borderRadius: "0.5rem",
               }}
               icon={item.icon}
@@ -57,13 +57,13 @@ export default function Experience() {
                 boxShadow: "none",
               }}
             >
-              <h3 className="text-2xl font-semibold dark:text-white">
+              <h3 className="text-lg font-semibold dark:text-white sm:text-xl md:text-2xl">
                 {item.title}
               </h3>
-              <p className="!mt-1 font-semibold text-dark-gray dark:text-white/70">
+              <p className="!mt-1 text-sm font-semibold text-dark-gray dark:text-white/70 sm:text-base">
                 {item.company}
               </p>
-              <div className="!mt-2 flex flex-wrap gap-x-3 text-sm text-dark-gray dark:text-white/70">
+              <div className="!mt-2 flex flex-wrap gap-x-2 text-xs text-dark-gray dark:text-white/70 sm:gap-x-3 sm:text-sm">
                 <p>{item.date}</p>
                 <span>•</span>
                 <p>{item.location}</p>
@@ -74,7 +74,7 @@ export default function Experience() {
                   </>
                 )}
               </div>
-              <p className="!mt-4 text-sm leading-relaxed text-dark-gray dark:text-white/70 sm:text-base sm:leading-relaxed">
+              <p className="!mt-3 text-sm leading-relaxed text-dark-gray dark:text-white/70 sm:!mt-4 sm:leading-relaxed md:text-base">
                 {item.description}
               </p>
             </VerticalTimelineElement>
