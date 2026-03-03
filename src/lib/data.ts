@@ -6,6 +6,7 @@ import FCRImg from "../../public/fcr.png";
 import TDAImg from "../../public/tda.png";
 import ERPImg from "../../public/erp.png";
 import MSCImg from "../../public/msc.png";
+import PAAImg from "../../public/paa.png";
 
 export const links = [
   {
@@ -80,11 +81,23 @@ export const projectsData = [
       "My final thesis which is to create a fully fledged attendance system using facial recognition. Includes a backend, Android, and camera app.",
     fullDescription:
       "My final thesis project involved developing an attendance system using facial recognition technology. The system consisted of a backend server (Express.js), an Android app to submit the student's facial data, and a dedicated camera app put inside classes/ labs for processing and verifying attendance (Python). I made the backend and camera app, while a colleague of mine made the Android app for his thesis.\n\nThe faces that are captured by the camera app are stored, for then to be processed again with other open-source face recognition models to verify their claimed accuracy. Though it seems qualitative, my thesis is actually quantitative as I focus on evaluating the accuracy of these open-source models using the data received from this face recognition attendance system. I used FaceNet512 from the DeepFace Python library as my primary model and it proved to have the highest accuracy among available models.",
-    tags: ["Python", "Express.js", "JavaScript", "MySQL"],
+    tags: ["Python", "Express.js", "MySQL", "Docker"],
     imageUrl: FCRImg,
     images: [],
     date: "Aug 2023 - Aug 2024",
     team: "Duo with Colleague",
+  },
+  {
+    title: "Phoenix Assurance App",
+    description:
+      "Developed an on-field inspection app that has configurable workflows and coordinate-based image annotations.",
+    fullDescription:
+      "I was asked to make an app to help workers do their inspection tasks. The idea was simple, an admin uploads an image and then they put boxes on the image with each boxes having their own questionnaire. Workers then go to their phone to fill in those questions and occasionally embed an image/ video/ audio. Naturally ideas evolved with having chaining (one inspection/ questionnaire after another), offline support, etc. The app is still early in development but it's already being used by some of the company's clients across multiple regions.\n\nThe app was initially made in Kotlin, but cross-platform support was then needed so it was then migrated to Flutter early in development. Besides this app, it also has a web app for the admins to create these chains, inspections, and questionnaires, as well as to see the reporting. The backend is made with Golang and PostgreSQL. Fun fact, the images can be configured to be stored in either file storage or this S3-compatible object storage called iDrive e2.",
+    tags: ["Flutter", "CI/CD", "Golang", "PostgreSQL"],
+    imageUrl: PAAImg,
+    images: [],
+    date: "Mar 2024 - Present",
+    team: "PT Phoenix Solusi Indonesia",
   },
   {
     title: "Rugged Tablet Demo App",
@@ -92,7 +105,7 @@ export const projectsData = [
       "Created a demo app to test a Fleet Management Kit and showcase a rugged tablet' support for docking station communication protocols.",
     fullDescription:
       "A demo app is made to display the features of the Neway N777A Rugged Tablet to showcase it's capabilities to customers and investors. As the company I work for deals in fleet management and visibility, the tablet is repurposed to receive data from the vehicle and send it to a Fleet Management System called Wialon. To help with visibility, the company also provides sensors to be put on vehicles.\n\nThe tablet sends data to a Wialon server through WiaTagKit, a library made by the company itself using it's own binary protocol. The data sent includes GPS coordinates (Lat, Long, Alt), Speed, Bearing, NFC data, and numerous low-current inputs such as analogs, GPIO, RS232, and RS485 via docking station. USB and CAN protocols can be used to read vehicle data. Distance and pressure sensors could also be connected through the inputs. It was fun reverse engineering the source code by the Chinese manufacturers to create this whole app.",
-    tags: ["Kotlin", "Android", "Embedded Systems"],
+    tags: ["Kotlin", "Android", "C/ C++", "Embedded Systems"],
     imageUrl: TDAImg,
     images: [],
     date: "Dec 2023 - Feb 2024",
@@ -104,7 +117,7 @@ export const projectsData = [
       "Made a student extracurricular credit manager. Merged it with an already existing in-campus organization tracking service.",
     fullDescription:
       "In an attempt to modernize and standardize legacy campus websites, DPTSI decided to migrate services into myITS, the uni's central portal using newer tech stacks. One of those legacy website is SIM ORMAWA that helps student and campus admins to manage what organizations there is in campus. A newer StudentConnect also exists in myITS, a module that helps student input their organization activities in exchange for credits. Since both serve the same users and have similar use cases, it's decided to merge SIM ORMAWA into StudentConnect to streamline processes.\n\nI helped create the frontend components needed to be transfered from SIM ORMAWA to StudentConnect using Next.js. The process was one of the first times I get to work in a huge team with proper scrum management and also having to speak with users directly. It was exhilirating when I got to see what I made had been deployed and used by thousands of students in ITS.",
-    tags: ["Next.js", "Tailwind", "TypeScript", "Golang"],
+    tags: ["Next.js", "Golang", "REST API", "Agile Methods (Scrum)"],
     imageUrl: MSCImg,
     images: [],
     date: "Sep 2023 - Dec 2023",
@@ -146,38 +159,40 @@ export const skillsData: readonly Skill[] = [
   { name: "TypeScript", category: "Programming Languages" },
   { name: "JavaScript", category: "Programming Languages" },
 
+  // Frontend
+  { name: "React", category: "Frontend" },
+  { name: "Next.js", category: "Frontend" },
+
   // Mobile
   { name: "Java", category: "Mobile" },
   { name: "Kotlin", category: "Mobile" },
   { name: "Flutter", category: "Mobile" },
 
-  // Frontend
-  { name: "React", category: "Frontend" },
-  { name: "Next.js", category: "Frontend" },
-
   // Backend
-  { name: "Golang", category: "Backend" },
+  { name: "Go", category: "Backend" },
   { name: "Node.js", category: "Backend" },
   { name: "Express.js", category: "Backend" },
+  { name: "Laravel", category: "Backend" },
 
   // Database
+  { name: "REST API", category: "Database" },
   { name: "MySQL", category: "Database" },
   { name: "PostgreSQL", category: "Database" },
 
   // Machine Learning/AI
   { name: "Python", category: "Machine Learning/AI" },
-  { name: "Tensorflow", category: "Machine Learning/AI" },
+  { name: "TensorFlow", category: "Machine Learning/AI" },
 
   // Embedded/IoT
-  { name: "C/ C++", category: "Programming Languages" },
+  { name: "C/ C++", category: "Embedded/IoT" },
   { name: "Arduino", category: "Embedded/IoT" },
   { name: "Embedded Systems", category: "Embedded/IoT" },
 
   // DevOps/Tools
+  { name: "Linux", category: "DevOps/Tools" },
   { name: "Docker", category: "DevOps/Tools" },
-  { name: "Bash / Shell Scripting", category: "DevOps/Tools" },
 
   // Project Management
-  { name: "Agile Methods (Scrum)", category: "Project Management" },
-  { name: "Project Management (JIRA, Trello)", category: "Project Management" },
+  { name: "Agile (Scrum)", category: "Project Management" },
+  { name: "CI/CD", category: "Project Management" },
 ] as const;
