@@ -55,6 +55,7 @@ const SocialButton = React.forwardRef<
         target={target}
         rel={rel}
         onClick={onClick}
+        aria-label={platform ? `${platform.charAt(0).toUpperCase() + platform.slice(1)} Profile` : undefined}
       >
         {children}
       </a>
@@ -67,6 +68,7 @@ const SocialButton = React.forwardRef<
       type="button"
       className={combinedClasses}
       onClick={onClick}
+      aria-label={platform ? `Copy ${platform.charAt(0).toUpperCase() + platform.slice(1)}` : undefined}
     >
       {children}
     </button>

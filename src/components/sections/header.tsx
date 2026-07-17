@@ -40,7 +40,7 @@ export default function Header() {
             className="flex h-[3rem] w-[3rem] items-center justify-center rounded-full border border-white/10 bg-[#151515]/60 text-[#E8EBEA] shadow-lg shadow-black/30 backdrop-blur-sm transition-all duration-300 ease-out hover:scale-110 active:scale-105 data-[closed]:-translate-y-20 data-[closed]:opacity-0 dark:border-white/5 dark:bg-[#2B2C28]/50 dark:shadow-black/40"
             aria-label="Home"
           >
-            <Image src={whiteImg} alt="Logo" width={38} height={38} priority />
+            <Image src={whiteImg} alt="Logo" width={38} height={38} priority style={{ width: "38px", height: "38px" }} />
           </button>
         </div>
       </Transition>
@@ -53,7 +53,7 @@ export default function Header() {
             className="mr-5 hidden h-[3rem] w-[3rem] items-center justify-center rounded-full border border-white/10 bg-[#151515]/60 text-[#E8EBEA] shadow-lg shadow-black/30 backdrop-blur-sm transition-all duration-300 ease-out hover:scale-110 active:scale-105 data-[closed]:-translate-y-20 data-[closed]:opacity-0 dark:border-white/5 dark:bg-[#2B2C28]/50 dark:shadow-black/40 sm:flex"
             aria-label="Home"
           >
-            <Image src={whiteImg} alt="Logo" width={38} height={38} priority />
+            <Image src={whiteImg} alt="Logo" width={38} height={38} priority style={{ width: "38px", height: "38px" }} />
           </button>
         </Transition>
 

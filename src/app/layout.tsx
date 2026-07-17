@@ -8,9 +8,32 @@ import ThemeContextProvider from "@/context/theme-context";
 
 const sans = Source_Sans_3({ subsets: ["latin"] });
 
+const siteTitle = "Nethan's Website";
+const siteDescription = "This is Nethan's personal website.";
+
 export const metadata: Metadata = {
-  title: "Nethan's Website",
-  description: "This is Nethan's personal website.",
+  title: siteTitle,
+  description: siteDescription,
+  applicationName: siteTitle,
+  authors: [{ name: "Nethaneel Patricio Linggar" }],
+  creator: "Nethaneel Patricio Linggar",
+  metadataBase: new URL("https://nethans-website.net/"),
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    siteName: siteTitle,
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary",
+    title: siteTitle,
+    description: siteDescription,
+  },
 };
 
 export default function RootLayout({
@@ -19,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="!scroll-smooth">
+    <html lang="en" className="!scroll-smooth relative" suppressHydrationWarning>
       <body
         className={`${sans.className} relative bg-[#E8EBEA] pt-28 text-black dark:bg-[#0A0A0A] dark:text-white dark:text-opacity-90 sm:pt-36`}
       >

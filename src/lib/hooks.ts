@@ -23,6 +23,26 @@ export function useSectionInView(sectionName: SectionName, threshold = 0.75) {
   return { ref, inView };
 }
 
+export function useCopyEmail() {
+  const [emailCopied, setEmailCopied] = useState(false);
+  const [copyFailed, setCopyFailed] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard
+      .writeText("nethan.linggar@gmail.com")
+      .then(() => {
+        setEmailCopied(true);
+        setTimeout(() => setEmailCopied(false), 2000);
+      })
+      .catch(() => {
+        setCopyFailed(true);
+        setTimeout(() => setCopyFailed(false), 2000);
+      });
+  };
+
+  return { emailCopied, copyFailed, handleCopyEmail };
+}
+
 export const useEmbed = () => {
   const [activeEmbed, setActiveEmbed] = useState<EmbedType>(null);
   const [clicked, setClicked] = useState<boolean>(false);

@@ -1,46 +1,24 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Source_Code_Pro } from "next/font/google";
-import { RiMailFill } from "react-icons/ri";
 import { motion } from "motion/react";
-import { BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
-import { FaGithubSquare, FaInstagramSquare } from "react-icons/fa";
-import { useSectionInView, useEmbed } from "@/lib/hooks";
+import { useSectionInView } from "@/lib/hooks";
 import TypeIt from "typeit-react";
 import monitorBig from "../../../public/monitorBig.png";
 import monitorSmall from "../../../public/monitorSmall.png";
 import name from "../../../public/name.png";
 import koss from "../../../public/koss.png";
 import blackOutline from "../../../public/blackOutline.png";
-import SocialButton from "../ui/social-button";
-import {
-  Popover,
-  PopoverButton,
-  PopoverPanel,
-  Transition,
-} from "@headlessui/react";
+import SocialLinks from "../ui/social-links";
 
 const code = Source_Code_Pro({ subsets: ["latin"] });
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
   const [isMobile, setIsMobile] = useState(false);
-  const [emailCopied, setEmailCopied] = useState(false);
-
-  const handleCopyEmail = () => {
-    navigator.clipboard
-      .writeText("nethan.linggar@gmail.com")
-      .then(() => {
-        setEmailCopied(true);
-        setTimeout(() => setEmailCopied(false), 2000);
-      })
-      .catch((err) => {
-        console.error("Failed to copy email: ", err);
-      });
-  };
 
   // Check for mobile device on client-side only
   useEffect(() => {
@@ -250,58 +228,7 @@ export default function Intro() {
           <HiDownload className="transition group-hover:translate-y-0.5" />
         </a>
         <div className="flex flex-row gap-6">
-          <Popover className="relative">
-            <PopoverButton
-              as={SocialButton}
-              onClick={handleCopyEmail}
-              platform="email"
-            >
-              <RiMailFill />
-            </PopoverButton>
-            <Transition
-              show={emailCopied}
-              enter="transition-all duration-150 ease-out"
-              enterFrom="opacity-0 scale-75"
-              enterTo="opacity-100 scale-100"
-              leave="transition-all duration-150 ease-in"
-              leaveFrom="opacity-100 scale-100"
-              leaveTo="opacity-0 scale-75"
-            >
-              <PopoverPanel
-                static
-                className="absolute left-1/2 top-16 z-10 -translate-x-1/2 whitespace-nowrap rounded-md bg-black/80 px-3 py-1.5 text-sm text-white dark:bg-white/80 dark:text-black"
-              >
-                Email copied!
-              </PopoverPanel>
-            </Transition>
-          </Popover>
-
-          <SocialButton
-            href="https://www.linkedin.com/in/nethaneel-patricio-linggar/"
-            target="_blank"
-            rel="noopener noreferrer"
-            platform="linkedin"
-          >
-            <BsLinkedin />
-          </SocialButton>
-
-          <SocialButton
-            href="https://github.com/NethanLinggar"
-            target="_blank"
-            rel="noopener noreferrer"
-            platform="github"
-          >
-            <FaGithubSquare />
-          </SocialButton>
-
-          <SocialButton
-            href="https://www.instagram.com/nethanpat/"
-            target="_blank"
-            rel="noopener noreferrer"
-            platform="instagram"
-          >
-            <FaInstagramSquare />
-          </SocialButton>
+          <SocialLinks />
         </div>
       </motion.div>
     </section>
