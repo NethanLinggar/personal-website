@@ -66,6 +66,7 @@ export default function ProjectCard({
                 src={imageUrl}
                 alt={`Project I Worked On - ${title}`}
                 quality={75}
+                sizes="100vw"
                 className="w-full min-w-[280px] max-w-[4000px]"
               />
             </div>
@@ -96,6 +97,7 @@ export default function ProjectCard({
               src={imageUrl}
               alt={`Project I Worked On - ${title}`}
               quality={75}
+              sizes="(max-width: 1024px) 50vw, 300px"
               className="absolute left-1/2 top-5 w-[70%] min-w-[300px] -translate-x-1/2 transition-transform group-hover:-translate-y-2 group-hover:scale-105"
             />
           </div>

@@ -107,6 +107,7 @@ export default function ProjectModal({
                   src={imageUrl}
                   alt={title}
                   quality={75}
+                  sizes="(max-width: 640px) 80vw, (max-width: 1024px) 50vw, 500px"
                   className="mx-auto w-2/3 max-w-2xl sm:w-[45%] sm:pt-2"
                 />
               </div>
@@ -139,6 +140,7 @@ export default function ProjectModal({
                           src={img}
                           alt={`${title} - Image ${index + 1}`}
                           quality={95}
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                           className="w-full"
                         />
                       </div>

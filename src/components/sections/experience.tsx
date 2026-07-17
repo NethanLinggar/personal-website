@@ -8,11 +8,9 @@ import {
 } from "../ui/vertical-timeline";
 import { experiencesData } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
-import { useTheme } from "@/context/theme-context";
 
 export default function Experience() {
   const { ref } = useSectionInView("Experience", 0.2);
-  const { theme } = useTheme();
 
   return (
     <section ref={ref} id="experience" className="mb-28 scroll-mt-28 sm:mb-40">
@@ -23,39 +21,7 @@ export default function Experience() {
             <VerticalTimelineElement
               visible={true}
               isFirst={index === 0}
-              lineColor={
-                theme === "light"
-                  ? "rgba(43, 44, 40, 0.2)"
-                  : "rgba(232, 235, 234, 0.2)"
-              }
-              contentStyle={{
-                background:
-                  theme === "light"
-                    ? "rgba(43, 44, 40, 0.2)"
-                    : "rgba(232, 235, 234, 0.1)",
-                boxShadow: "none",
-                border:
-                  theme === "light"
-                    ? "1px solid rgba(255, 255, 255, 0.05)"
-                    : "1px solid rgba(255, 255, 255, 0.05)",
-                textAlign: "left",
-                padding: "1.25rem 1rem",
-                borderRadius: "0.5rem",
-              }}
               icon={item.icon}
-              iconStyle={{
-                background:
-                  theme === "light"
-                    ? "rgba(43, 44, 40, 0.2)"
-                    : "rgba(232, 235, 234, 0.1)",
-                color: theme === "light" ? "#0A0A0A" : "#E8EBEA",
-                fontSize: "1.5rem",
-                border:
-                  theme === "light"
-                    ? "1px solid rgba(255, 255, 255, 0.05)"
-                    : "1px solid rgba(255, 255, 255, 0.05)",
-                boxShadow: "none",
-              }}
             >
               <h3 className="text-lg font-semibold dark:text-white sm:text-xl md:text-2xl">
                 {item.title}

@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   allowedDevOrigins: ["*"],
+  poweredByHeader: false,
   images: {
     remotePatterns: [
       {

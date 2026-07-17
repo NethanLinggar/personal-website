@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { links } from "@/lib/data";
 import Link from "next/link";
@@ -16,10 +16,10 @@ export default function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSectionContext();
   const { theme, toggleTheme } = useTheme();
-  const [isVisible, setIsVisible] = React.useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   // Trigger animation on mount
-  React.useEffect(() => {
+  useEffect(() => {
     setIsVisible(true);
   }, []);
 

@@ -57,6 +57,7 @@ export default function Intro() {
                   alt="Monitor"
                   quality={75}
                   priority={true}
+                  sizes="(max-width: 640px) 300px, 600px"
                   className="relative"
                 />
               ) : (
@@ -65,6 +66,7 @@ export default function Intro() {
                   alt="Monitor"
                   quality={75}
                   priority={true}
+                  sizes="300px"
                   className="relative"
                 />
               )}
@@ -172,6 +174,7 @@ export default function Intro() {
               alt="Nametag"
               quality={75}
               priority={true}
+              sizes="(max-width: 640px) 120px, 200px"
               className="w-[20vw] min-w-[120px] max-w-[200px]"
             />
           </motion.div>
@@ -205,6 +208,7 @@ export default function Intro() {
               alt="koss"
               quality={75}
               priority={true}
+              sizes="(max-width: 640px) 50px, 100px"
               className="w-[10vw] min-w-[50px] max-w-[100px]"
             />
           </motion.div>

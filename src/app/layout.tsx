@@ -43,6 +43,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="!scroll-smooth relative" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                var theme = localStorage.getItem("theme");
+                if (theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+                  document.documentElement.classList.add("dark");
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${sans.className} relative bg-[#E8EBEA] pt-28 text-black dark:bg-[#0A0A0A] dark:text-white dark:text-opacity-90 sm:pt-36`}
       >

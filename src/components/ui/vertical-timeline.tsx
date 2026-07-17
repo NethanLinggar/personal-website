@@ -50,7 +50,7 @@ export function VerticalTimelineElement({
   const iconRef = useRef<HTMLDivElement>(null);
 
   // Line starts after current element's icon and content animations complete
-  const lineDelay = 550;
+  const lineDelay = 400;
 
   // Calculate line height between icons
   const calculateLineHeight = () => {
@@ -180,10 +180,11 @@ export function VerticalTimelineElement({
         <div
           className="absolute w-[2px] rounded-full transition-all duration-500"
           style={{
-            background: lineColor || "rgba(156, 163, 175, 0.3)",
+            background:
+              lineColor || "var(--line-color, rgba(156, 163, 175, 0.3))",
             height: `${lineHeight}px`,
             transform: lineVisible ? "scaleY(1)" : "scaleY(0)",
-            transformOrigin: "top", // Animates from top to bottom
+            transformOrigin: "top",
             opacity: lineVisible ? 1 : 0,
             left: "calc(-4.4rem + 1.625rem - 1px)",
             bottom: "100%",
@@ -197,7 +198,7 @@ export function VerticalTimelineElement({
       <div
         ref={iconRef}
         data-timeline-icon
-        className="absolute -left-[4.4rem] top-0 flex h-[3.25rem] w-[3.25rem] items-center justify-center rounded-full transition-all duration-500"
+        className="absolute -left-[4.4rem] top-0 flex h-[3.25rem] w-[3.25rem] items-center justify-center rounded-full border border-white/5 bg-light-gray/20 text-2xl text-black shadow-none transition-all duration-500 dark:bg-white/10 dark:text-white"
         style={{
           ...iconStyle,
           transform: isVisible ? "scale(1)" : "scale(0)",
@@ -210,7 +211,7 @@ export function VerticalTimelineElement({
 
       {/* Content card */}
       <div
-        className="rounded-lg transition-all duration-500"
+        className="rounded-lg border border-white/5 bg-light-gray/20 px-4 py-5 text-left shadow-none transition-all duration-500 dark:bg-white/10"
         style={{
           ...contentStyle,
           transform: isVisible
