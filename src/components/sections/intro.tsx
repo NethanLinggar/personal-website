@@ -18,19 +18,23 @@ const code = Source_Code_Pro({ subsets: ["latin"] });
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
+  const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   // Check for mobile device on client-side only
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 640);
+      setIsMobile(window.innerWidth < 768);
     };
 
     checkMobile();
+    setMounted(true);
     window.addEventListener("resize", checkMobile);
 
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  const shouldAnimate = mounted && !isMobile;
 
   return (
     <section
@@ -44,12 +48,12 @@ export default function Intro() {
             {/* Monitor */}
             <motion.div
               className="relative z-0"
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{
-                type: "tween",
-                duration: 0.2,
-              }}
+              key={"monitor-" + (shouldAnimate ? "animate" : "static")}
+              initial={shouldAnimate ? { opacity: 0, scale: 0 } : false}
+              animate={shouldAnimate ? { opacity: 1, scale: 1 } : undefined}
+              transition={
+                shouldAnimate ? { type: "tween", duration: 0.2 } : undefined
+              }
             >
               {!isMobile ? (
                 <Image
@@ -160,14 +164,14 @@ export default function Intro() {
           {/* Nametag */}
           <motion.div
             className="absolute left-[-1rem] top-[-3rem] z-20 sm:top-[-3.5rem]"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 125,
-              delay: 0.1,
-              duration: 0.7,
-            }}
+            key={"nametag-" + (shouldAnimate ? "animate" : "static")}
+            initial={shouldAnimate ? { opacity: 0, scale: 0 } : false}
+            animate={shouldAnimate ? { opacity: 1, scale: 1 } : undefined}
+            transition={
+              shouldAnimate
+                ? { type: "spring", stiffness: 125, delay: 0.1, duration: 0.7 }
+                : undefined
+            }
           >
             <Image
               src={name}
@@ -181,24 +185,33 @@ export default function Intro() {
           {/* koss */}
           <motion.div
             className="absolute right-[0rem] top-[0.5rem] z-20 sm:top-[0.75rem]"
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-              rotate: !isMobile ? [5, -5, 3, -3] : 0,
-            }}
-            transition={{
-              type: "spring",
-              stiffness: 125,
-              delay: 0.1,
-              duration: 0.7,
-              rotate: {
-                duration: 4,
-                repeat: Infinity,
-                repeatType: "reverse",
-                ease: "easeInOut",
-              },
-            }}
+            key={"koss-" + (shouldAnimate ? "animate" : "static")}
+            initial={shouldAnimate ? { opacity: 0, scale: 0 } : false}
+            animate={
+              shouldAnimate
+                ? {
+                    opacity: 1,
+                    scale: 1,
+                    rotate: [5, -5, 3, -3],
+                  }
+                : undefined
+            }
+            transition={
+              shouldAnimate
+                ? {
+                    type: "spring",
+                    stiffness: 125,
+                    delay: 0.1,
+                    duration: 0.7,
+                    rotate: {
+                      duration: 4,
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                      ease: "easeInOut",
+                    },
+                  }
+                : undefined
+            }
             style={{
               transformOrigin: "top center",
             }}
@@ -218,9 +231,10 @@ export default function Intro() {
       {/* Buttons */}
       <motion.div
         className="flex flex-col items-center justify-center gap-10 px-4 text-lg font-medium"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
+        key={"buttons-" + (shouldAnimate ? "animate" : "static")}
+        initial={shouldAnimate ? { opacity: 0, y: 100 } : false}
+        animate={shouldAnimate ? { opacity: 1, y: 0 } : undefined}
+        transition={shouldAnimate ? { delay: 0.1 } : undefined}
       >
         <a
           className="group flex items-center gap-2 rounded-full border border-white/10 bg-black px-7 py-3 text-white decoration-2 underline-offset-2 outline-none transition-transform hover:scale-110 hover:underline focus:scale-110 active:scale-105 dark:border-white/5 dark:bg-white dark:text-black dark:hover:text-black"

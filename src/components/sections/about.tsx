@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import SectionHeading from "../ui/section-heading";
 import { motion } from "motion/react";
 import { useSectionInView, useEmbed } from "@/lib/hooks";
@@ -15,13 +16,29 @@ export default function About() {
     handleClose,
   } = useEmbed();
 
+  const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    setMounted(true);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const shouldAnimate = mounted && !isMobile;
+
   return (
     <motion.section
       ref={ref}
       className="mb-28 max-w-[45rem] scroll-mt-28 text-center text-sm leading-8 dark:text-white sm:mb-32 sm:text-base sm:leading-8"
-      initial={{ opacity: 0, y: 100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.175 }}
+      key={"about-" + (shouldAnimate ? "animate" : "static")}
+      initial={shouldAnimate ? { opacity: 0, y: 100 } : false}
+      animate={shouldAnimate ? { opacity: 1, y: 0 } : undefined}
+      transition={shouldAnimate ? { delay: 0.175 } : undefined}
       id="about"
     >
       <SectionHeading>About Me</SectionHeading>

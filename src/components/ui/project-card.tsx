@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { projectsData } from "@/lib/data";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
@@ -31,6 +31,17 @@ export default function ProjectCard({
   const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
   const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => {
@@ -48,11 +59,18 @@ export default function ProjectCard({
     <>
       <motion.div
         ref={ref}
-        style={{
-          scale: scaleProgress,
-          opacity: opacityProgress,
-          willChange: "transform, opacity",
-        }}
+        style={
+          !isMobile
+            ? {
+                scale: scaleProgress,
+                opacity: opacityProgress,
+                willChange: "transform, opacity",
+              }
+            : undefined
+        }
+        initial={isMobile ? { opacity: 0, y: 10 } : undefined}
+        animate={isMobile ? { opacity: 1, y: 0 } : undefined}
+        transition={isMobile ? { duration: 0.3 } : undefined}
         className="group mb-5 last:mb-0 sm:mb-8"
       >
         <section

@@ -46,8 +46,18 @@ export function VerticalTimelineElement({
   const [isVisible, setIsVisible] = useState(false);
   const [lineVisible, setLineVisible] = useState(false);
   const [lineHeight, setLineHeight] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
   const iconRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Line starts after current element's icon and content animations complete
   const lineDelay = 400;
@@ -214,9 +224,11 @@ export function VerticalTimelineElement({
         className="rounded-lg border border-white/5 bg-light-gray/20 px-4 py-5 text-left shadow-none transition-all duration-500 dark:bg-white/10"
         style={{
           ...contentStyle,
-          transform: isVisible
-            ? "translateX(0) translateY(0)"
-            : "translateX(-20px) translateY(20px)",
+          transform: isMobile
+            ? undefined
+            : isVisible
+              ? "translateX(0) translateY(0)"
+              : "translateX(-20px) translateY(20px)",
           opacity: isVisible ? 1 : 0,
         }}
       >
