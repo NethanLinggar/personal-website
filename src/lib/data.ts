@@ -2,11 +2,12 @@ import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
 import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
-import FCRImg from "../../public/fcr.png";
-import TDAImg from "../../public/tda.png";
-import ERPImg from "../../public/erp.png";
-import MSCImg from "../../public/msc.png";
-import PAAImg from "../../public/paa.png";
+import FCRImg from "../../public/projects/fcr.png";
+import TDAImg from "../../public/projects/tda.png";
+import ERPImg from "../../public/projects/erp.png";
+import MSCImg from "../../public/projects/msc.png";
+import PAAImg from "../../public/projects/paa.png";
+import TPMSImg from "../../public/projects/tpms.png";
 
 export const links = [
   {
@@ -109,6 +110,18 @@ export const projectsData = [
     imageUrl: TDAImg,
     images: [],
     date: "Dec 2023 - Feb 2024",
+    team: "PT Phoenix Solusi Indonesia",
+  },
+  {
+    title: "Tire Pressure Management System App",
+    description:
+      "Developed a tire pressure monitoring app that communicates with a TPMS module to provide real-time tire pressure and temperature monitoring.",
+    fullDescription:
+      "As the company I work for focuses on fleet management and visibility, monitoring tire health is another important aspect of keeping commercial vehicles operational. To support this, I developed an Android application that communicates with PressurePro's Pulse FX TPMS module, which wirelessly collects pressure and temperature data from sensors installed on each tire. The application presents this information in real time, allowing drivers and operators to quickly identify potential tire issues.\n\nSince different vehicles have different wheel configurations, the application allows users to configure the number of tires on each side and rear axle to match the actual vehicle. Each configuration is linked to the UUID of its corresponding TPMS module so the application can automatically reconnect to the correct hardware. It was an interesting project because it involved integrating Android with external hardware over Bluetooth while building a flexible interface that could adapt to a wide variety of commercial vehicles.",
+    tags: ["Kotlin", "Android", "Bluetooth", "Embedded Systems"],
+    imageUrl: TPMSImg,
+    images: [],
+    date: "Mar 2026 - Apr 2026",
     team: "PT Phoenix Solusi Indonesia",
   },
   {

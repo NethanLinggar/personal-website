@@ -7,11 +7,11 @@ import { motion } from "motion/react";
 import { HiDownload } from "react-icons/hi";
 import { useSectionInView } from "@/lib/hooks";
 import TypeIt from "typeit-react";
-import monitorBig from "../../../public/monitorBig.png";
-import monitorSmall from "../../../public/monitorSmall.png";
-import name from "../../../public/name.png";
-import koss from "../../../public/koss.png";
-import blackOutline from "../../../public/blackOutline.png";
+import monitorBig from "../../../public/intro/monitorBig.png";
+import monitorSmall from "../../../public/intro/monitorSmall.png";
+import name from "../../../public/intro/name.png";
+import koss from "../../../public/intro/koss.png";
+import blackOutline from "../../../public/icons/blackOutline.png";
 import SocialLinks from "../ui/social-links";
 
 const code = Source_Code_Pro({ subsets: ["latin"] });
