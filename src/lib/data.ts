@@ -7,7 +7,10 @@ import TDAImg from "../../public/projects/tda.png";
 import ERPImg from "../../public/projects/erp.png";
 import MSCImg from "../../public/projects/msc.png";
 import PAAImg from "../../public/projects/paa.png";
-import TPMSImg from "../../public/projects/tpms.png";
+import TPMSImg from "../../public/projects/tpm.png";
+import LBMImg from "../../public/projects/lbm.png";
+import PWSImg from "../../public/projects/pws.png";
+import FDGImg from "../../public/projects/fdg.png";
 
 export const links = [
   {
@@ -147,6 +150,33 @@ export const projectsData = [
     images: [],
     date: "Jan 2023 - Jul 2023",
     team: "Team led by Prof. Drs. Ec. Ir. Riyanarto Sarno, M.Sc Ph.D.",
+  },
+] as const;
+
+export const miniProjectsData = [
+  {
+    title: "Personal Website",
+    fullDescription:
+      "The Next.js site you're currently looking at. Built with TypeScript and Tailwind CSS, it's where I showcase my experience, skills, and projects like this one.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+    imageUrl: PWSImg,
+    repoUrl: "https://github.com/NethanLinggar/personal-website",
+  },
+  {
+    title: "Letterboxd Mini Profile",
+    fullDescription:
+      "A lightweight embeddable widget for showing a Letterboxd profile on any site, inspired by the existing steam-miniprofile project. Since Letterboxd doesn't offer a public API, the widget pulls data through a small Python scraper deployed on Vercel, which the hosted HTML page then renders. It's used on this very site to display my own Letterboxd activity.",
+    tags: ["Python", "HTML/CSS", "GitHub Pages"],
+    imageUrl: LBMImg,
+    repoUrl: "https://github.com/NethanLinggar/letterboxd-miniprofile",
+  },
+  {
+    title: "Financial Diary Generator",
+    fullDescription:
+      "A CLI tool that takes BCA PDF statements and Mandiri Excel statements and turns them into a structured monthly financial diary. It auto-generates per-month transaction sheets plus running summaries: cash flow, spending by category, and an all-time rollup rebuilt from every month's data. A separate pipeline handles Mandiri credit card statements too, tracking installment plans and utilization over time.",
+    tags: ["Python", "CLI Tool", "Excel"],
+    imageUrl: FDGImg,
+    repoUrl: "https://github.com/NethanLinggar/financial-diary",
   },
 ] as const;
 
