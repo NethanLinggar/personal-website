@@ -40,7 +40,7 @@ export default function Projects() {
       <div className="flex flex-wrap justify-center gap-4">
         {miniProjectsData.map((project, index) => (
           <React.Fragment key={index}>
-            <div className="w-52 sm:w-56 md:w-64">
+            <div className="w-40 sm:w-64">
               <MiniProjectCard
                 {...project}
                 canOpenModal={canOpenModal}

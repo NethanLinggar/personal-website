@@ -190,6 +190,7 @@ export function VerticalTimelineElement({
         <div
           className="absolute w-[2px] rounded-full transition-all duration-500"
           style={{
+            zIndex: 0,
             background:
               lineColor || "var(--line-color, rgba(156, 163, 175, 0.3))",
             height: `${lineHeight}px`,
@@ -208,7 +209,7 @@ export function VerticalTimelineElement({
       <div
         ref={iconRef}
         data-timeline-icon
-        className="absolute -left-[4.4rem] top-0 flex h-[3.25rem] w-[3.25rem] items-center justify-center rounded-full border border-white/5 bg-light-gray/20 text-2xl text-black shadow-none transition-all duration-500 dark:bg-white/10 dark:text-white"
+        className="absolute -left-[4.4rem] top-0 z-10 flex h-[3.25rem] w-[3.25rem] items-center justify-center rounded-full border border-white/5 bg-light-gray/20 text-2xl text-black shadow-none transition-all duration-500 dark:bg-white/10 dark:text-white"
         style={{
           ...iconStyle,
           transform: isVisible ? "scale(1)" : "scale(0)",
