@@ -165,7 +165,7 @@ export const miniProjectsData = [
   {
     title: "Letterboxd Mini Profile",
     fullDescription:
-      "A lightweight embeddable widget for showing a Letterboxd profile on any site, inspired by the existing steam-miniprofile project. Since Letterboxd doesn't offer a public API, the widget pulls data through a small Python scraper deployed on Vercel, which the hosted HTML page then renders. It's used on this very site to display my own Letterboxd activity.",
+      "A lightweight embeddable widget for showing a Letterboxd profile on any site, inspired by the existing steam-miniprofile project. Since Letterboxd doesn't offer a public API, the widget USED TO pull data through a deployed small Python scraper, until Cloudflare blocks got more strict. Now it only displays a static JSON file (that has to be manually updated) which the hosted HTML page then renders. Original implementation is still cool though, that's why I kept it in this list of projects.",
     tags: ["Python", "HTML/CSS", "GitHub Pages"],
     imageUrl: LBMImg,
     repoUrl: "https://github.com/NethanLinggar/letterboxd-miniprofile",
