@@ -37,12 +37,22 @@ export const links = [
 
 export const experiencesData = [
   {
+    title: "Fullstack Developer",
+    company: "PT Hitachi Channel Solutions Indonesia",
+    description:
+      "Fullstack developer using Vue.js and Go. Building monitoring and management applications for financial systems.",
+    icon: React.createElement(CgWorkAlt),
+    date: "Sep 2026 - Present",
+    location: "Jakarta, Indonesia",
+    locationType: "On-site",
+  },
+  {
     title: "Developer Consultant",
     company: "PT Phoenix Solusi Indonesia",
     description:
-      "Full time at the telematics provider company. Working with Fleet Management Systems and build supporting apps.",
+      "Full time at the telematics provider company. Worked with Fleet Management Systems and build supporting apps.",
     icon: React.createElement(CgWorkAlt),
-    date: "Oct 2024 - Now",
+    date: "Oct 2024 - Sep 2026",
     location: "Jakarta, Indonesia",
     locationType: "Hybrid",
   },

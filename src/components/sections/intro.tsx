@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { Source_Code_Pro } from "next/font/google";
 import { motion } from "motion/react";
 import { HiDownload } from "react-icons/hi";
 import { useSectionInView } from "@/lib/hooks";
@@ -13,8 +12,6 @@ import name from "../../../public/intro/name.png";
 import koss from "../../../public/intro/koss.png";
 import blackOutline from "../../../public/icons/blackOutline.png";
 import SocialLinks from "../ui/social-links";
-
-const code = Source_Code_Pro({ subsets: ["latin"] });
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
@@ -77,7 +74,7 @@ export default function Intro() {
 
               {/* Inside Monitor */}
               <div
-                className={`${code.className} absolute inset-0 top-[-35%] flex items-center justify-between overflow-hidden px-[5%]`}
+                className={`font-code absolute inset-0 top-[-35%] flex items-center justify-between overflow-hidden px-[5%]`}
               >
                 <div className="flex w-full items-center justify-between space-x-8">
                   {/* Logo Image */}

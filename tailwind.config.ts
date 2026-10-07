@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import colors from "tailwindcss/colors";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
   content: [
@@ -9,6 +10,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Source Sans 3 Variable"', ...defaultTheme.fontFamily.sans],
+        code: ['"Source Code Pro Variable"', ...defaultTheme.fontFamily.mono],
+      },
       colors: {
         red: "#EB4633",
         white: "#E8EBEA",

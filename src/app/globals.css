@@ -1,3 +1,6 @@
+@import "@fontsource-variable/source-sans-3";
+@import "@fontsource-variable/source-code-pro";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
