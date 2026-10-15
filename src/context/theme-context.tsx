@@ -1,6 +1,7 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useRef, useState } from "react";
+import ThemeTransition from "@/components/ui/theme-transition";
 
 type Theme = "light" | "dark";
 
@@ -22,21 +23,47 @@ export default function ThemeContextProvider({
     if (typeof window !== "undefined") {
       const stored = window.localStorage.getItem("theme") as Theme | null;
       if (stored === "dark" || stored === "light") return stored;
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches)
+        return "dark";
     }
     return "light";
   });
+  const [transitionPhase, setTransitionPhase] = useState<
+    "rise" | "reveal" | null
+  >(null);
+  const transitionInProgress = useRef(false);
 
   const toggleTheme = () => {
+    if (transitionInProgress.current) return;
+
     if (theme === "light") {
       setTheme("dark");
       window.localStorage.setItem("theme", "dark");
       document.documentElement.classList.add("dark");
-    } else {
+      return;
+    }
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setTheme("light");
       window.localStorage.setItem("theme", "light");
       document.documentElement.classList.remove("dark");
+      return;
     }
+
+    transitionInProgress.current = true;
+    setTransitionPhase("rise");
+  };
+
+  const revealLightTheme = () => {
+    setTheme("light");
+    window.localStorage.setItem("theme", "light");
+    document.documentElement.classList.remove("dark");
+    setTransitionPhase("reveal");
+  };
+
+  const finishTransition = () => {
+    transitionInProgress.current = false;
+    setTransitionPhase(null);
   };
 
   return (
@@ -47,6 +74,13 @@ export default function ThemeContextProvider({
       }}
     >
       {children}
+      {transitionPhase && (
+        <ThemeTransition
+          phase={transitionPhase}
+          onCovered={revealLightTheme}
+          onComplete={finishTransition}
+        />
+      )}
     </ThemeContext.Provider>
   );
 }
