@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { HiDownload } from "react-icons/hi";
-import { useSectionInView } from "@/lib/hooks";
+import { useIsMobile, useSectionInView } from "@/lib/hooks";
 import TypeIt from "typeit-react";
 import monitorBig from "../../../public/intro/monitorBig.png";
 import monitorSmall from "../../../public/intro/monitorSmall.png";
@@ -16,19 +16,10 @@ import SocialLinks from "../ui/social-links";
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
   const [mounted, setMounted] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useIsMobile();
 
-  // Check for mobile device on client-side only
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
     setMounted(true);
-    window.addEventListener("resize", checkMobile);
-
-    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const shouldAnimate = mounted && !isMobile;
