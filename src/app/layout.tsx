@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import Footer from "@/components/sections/footer";
 import ThemeContextProvider from "@/context/theme-context";
+import Script from "next/script";
 
 const siteTitle = "Nethan's Website";
 const siteDescription = "This is Nethan's personal website.";
@@ -41,7 +42,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="!scroll-smooth relative" suppressHydrationWarning>
       <head>
-        <script
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               try {
