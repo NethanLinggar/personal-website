@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useIsMobile } from "@/lib/hooks";
 
 interface VerticalTimelineProps {
   children: React.ReactNode;
@@ -46,24 +47,15 @@ export function VerticalTimelineElement({
   const [isVisible, setIsVisible] = useState(false);
   const [lineVisible, setLineVisible] = useState(false);
   const [lineHeight, setLineHeight] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useIsMobile();
   const elementRef = useRef<HTMLDivElement>(null);
   const iconRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
 
   // Line starts after current element's icon and content animations complete
   const lineDelay = 400;
 
   // Calculate line height between icons
-  const calculateLineHeight = () => {
+  const calculateLineHeight = useCallback(() => {
     if (!isFirst && iconRef.current && elementRef.current) {
       // Triple RAF ensures all layout calculations are complete
       requestAnimationFrame(() => {
@@ -97,10 +89,13 @@ export function VerticalTimelineElement({
         });
       });
     }
-  };
+  }, [isFirst]);
 
   // Handle scroll-triggered visibility animation
   useEffect(() => {
+    const element = elementRef.current;
+    if (!element) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -120,16 +115,10 @@ export function VerticalTimelineElement({
       },
     );
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
+    observer.observe(element);
 
-    return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
-      }
-    };
-  }, [visible, isVisible]);
+    return () => observer.unobserve(element);
+  }, [visible, isVisible, calculateLineHeight]);
 
   // Separate effect to trigger line animation with stagger
   useEffect(() => {
@@ -177,7 +166,7 @@ export function VerticalTimelineElement({
         resizeObserver.disconnect();
       }
     };
-  }, [isFirst, isVisible]);
+  }, [isFirst, isVisible, calculateLineHeight]);
 
   return (
     <div

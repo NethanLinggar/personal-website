@@ -1,10 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { HiDownload } from "react-icons/hi";
-import { useIsMobile, useSectionInView } from "@/lib/hooks";
+import { useIsClient, useIsMobile, useSectionInView } from "@/lib/hooks";
 import TypeIt from "typeit-react";
 import monitorBig from "../../../public/intro/monitorBig.png";
 import monitorSmall from "../../../public/intro/monitorSmall.png";
@@ -15,13 +14,8 @@ import SocialLinks from "../ui/social-links";
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useIsClient();
   const isMobile = useIsMobile();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const shouldAnimate = mounted && !isMobile;
 
   return (

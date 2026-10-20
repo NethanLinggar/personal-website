@@ -1,9 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import SectionHeading from "../ui/section-heading";
 import { motion } from "motion/react";
-import { useSectionInView, useEmbed } from "@/lib/hooks";
+import {
+  useIsClient,
+  useIsMobile,
+  useSectionInView,
+  useEmbed,
+} from "@/lib/hooks";
 import EmbedModal from "../ui/embed-modal";
 
 export default function About() {
@@ -16,19 +20,8 @@ export default function About() {
     handleClose,
   } = useEmbed();
 
-  const [mounted, setMounted] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    setMounted(true);
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
+  const mounted = useIsClient();
+  const isMobile = useIsMobile();
   const shouldAnimate = mounted && !isMobile;
 
   return (

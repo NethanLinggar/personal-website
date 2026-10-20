@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { useIsClient } from "@/lib/hooks";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { motion } from "motion/react";
@@ -18,18 +19,19 @@ const EmbedModal: React.FC<EmbedModalProps> = ({
   onClose,
 }) => {
   const [canClose, setCanClose] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const [previousIsVisible, setPreviousIsVisible] = useState(isVisible);
+  const mounted = useIsClient();
+
+  if (isVisible !== previousIsVisible) {
+    setPreviousIsVisible(isVisible);
+    if (isVisible) setCanClose(false);
+  }
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    if (!isVisible) return;
 
-  useEffect(() => {
-    if (isVisible) {
-      setCanClose(false);
-      const timer = setTimeout(() => setCanClose(true), 500);
-      return () => clearTimeout(timer);
-    }
+    const timer = setTimeout(() => setCanClose(true), 500);
+    return () => clearTimeout(timer);
   }, [isVisible]);
 
   const handleClose = () => {
@@ -38,7 +40,6 @@ const EmbedModal: React.FC<EmbedModalProps> = ({
     }
   };
 
-  // Prevent hydration mismatch by only rendering on client
   if (!mounted) {
     return null;
   }

@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { links } from "@/lib/data";
 import Link from "next/link";
 import clsx from "clsx";
 import { useActiveSectionContext } from "@/context/active-section-context";
 import { useTheme } from "@/context/theme-context";
+import { useIsClient, useIsMobile } from "@/lib/hooks";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
 import whiteImg from "../../../public/whiteFill.svg";
 import { Transition } from "@headlessui/react";
@@ -16,20 +16,8 @@ export default function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSectionContext();
   const { theme, toggleTheme } = useTheme();
-  const [isVisible, setIsVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Trigger animation on mount
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  const isMobile = useIsMobile();
+  const mounted = useIsClient();
 
   const enterClass = isMobile
     ? "transition-all duration-300 ease-out data-[closed]:opacity-0"
@@ -38,7 +26,7 @@ export default function Header() {
   return (
     <header className="relative z-[999]">
       {/* Navigation Bar Background */}
-      <Transition show={isVisible} appear>
+      <Transition show={mounted} appear>
         <div
           className={`fixed bottom-9 left-1/2 h-[3.25rem] w-[22.5rem] -translate-x-1/2 rounded-full border border-white/10 bg-[#151515]/60 shadow-lg shadow-black/30 backdrop-blur-sm ${enterClass} dark:border-white/5 dark:bg-[#2B2C28]/50 dark:shadow-black/40 sm:top-6`}
           style={{ willChange: isMobile ? "opacity" : "transform, opacity" }}
@@ -46,7 +34,7 @@ export default function Header() {
       </Transition>
 
       {/* Mobile Logo */}
-      <Transition show={isVisible} appear>
+      <Transition show={mounted} appear>
         <div className="fixed left-3 top-3 sm:hidden">
           <button
             className={`flex h-[3rem] w-[3rem] items-center justify-center rounded-full border border-white/10 bg-[#151515]/60 text-[#E8EBEA] shadow-lg shadow-black/30 backdrop-blur-sm ${enterClass} hover:scale-110 active:scale-105 dark:border-white/5 dark:bg-[#2B2C28]/50 dark:shadow-black/40`}
@@ -60,7 +48,7 @@ export default function Header() {
       {/* Navigation */}
       <nav className="fixed bottom-[2.5rem] left-1/2 flex h-[initial] -translate-x-1/2 py-0 sm:bottom-auto sm:top-[1.6rem]">
         {/* Desktop Logo */}
-        <Transition show={isVisible} appear>
+        <Transition show={mounted} appear>
           <button
             className={`mr-5 hidden h-[3rem] w-[3rem] items-center justify-center rounded-full border border-white/10 bg-[#151515]/60 text-[#E8EBEA] shadow-lg shadow-black/30 backdrop-blur-sm ${enterClass} hover:scale-110 active:scale-105 dark:border-white/5 dark:bg-[#2B2C28]/50 dark:shadow-black/40 sm:flex`}
             aria-label="Home"
@@ -70,7 +58,7 @@ export default function Header() {
         </Transition>
 
         {/* Navigation Links */}
-        <Transition show={isVisible} appear>
+        <Transition show={mounted} appear>
           <ul className={`flex w-[24rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-[#E8EBEA] ${enterClass} sm:w-[initial] sm:flex-nowrap`}>
             {links.map((link) => (
               <li
@@ -112,7 +100,7 @@ export default function Header() {
         </Transition>
 
         {/* Desktop Theme Toggle */}
-        <Transition show={isVisible} appear>
+        <Transition show={mounted} appear>
           <button
             className={`ml-5 hidden h-[3rem] w-[3rem] items-center justify-center rounded-full border border-white/10 bg-[#151515]/60 text-4xl text-[#E8EBEA] shadow-lg shadow-black/30 backdrop-blur-sm ${enterClass} hover:scale-110 active:scale-105 dark:border-white/5 dark:bg-[#2B2C28]/50 dark:shadow-black/40 sm:flex`}
             onClick={toggleTheme}
@@ -126,7 +114,7 @@ export default function Header() {
       </nav>
 
       {/* Mobile Theme Toggle */}
-      <Transition show={isVisible} appear>
+      <Transition show={mounted} appear>
         <div className="fixed right-3 top-3 sm:hidden">
           <button
             className={`flex h-[3rem] w-[3rem] items-center justify-center rounded-full border border-white/10 bg-[#151515]/60 text-4xl text-[#E8EBEA] shadow-lg shadow-black/30 backdrop-blur-sm ${enterClass} hover:scale-110 active:scale-105 dark:border-white/5 dark:bg-[#2B2C28]/50 dark:shadow-black/40`}

@@ -1,40 +1,62 @@
 "use client";
 
 import { useActiveSectionContext } from "@/context/active-section-context";
-import { useEffect, useRef, useState, useCallback } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useSyncExternalStore,
+} from "react";
 import type { SectionName } from "./types";
 
 export type EmbedType = "steam" | "spotify" | "letterboxd" | null;
 
+const mobileQuery = "(max-width: 767px)";
+
+function subscribeToMobileChange(callback: () => void) {
+  const mediaQuery = window.matchMedia(mobileQuery);
+  mediaQuery.addEventListener("change", callback);
+  return () => mediaQuery.removeEventListener("change", callback);
+}
+
+function getIsMobileSnapshot() {
+  return window.matchMedia(mobileQuery).matches;
+}
+
 export function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false);
+  return useSyncExternalStore(
+    subscribeToMobileChange,
+    getIsMobileSnapshot,
+    () => false,
+  );
+}
 
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+const subscribeToClient = () => () => {};
 
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  return isMobile;
+export function useIsClient() {
+  return useSyncExternalStore(subscribeToClient, () => true, () => false);
 }
 
 function useInView(options?: IntersectionObserverInit) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [inView, setInView] = useState(false);
+  const { threshold, root, rootMargin } = options ?? {};
 
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
 
-    const observer = new IntersectionObserver(([entry]) => {
-      setInView(entry.isIntersecting);
-    }, options);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting);
+      },
+      { threshold, root, rootMargin },
+    );
 
     observer.observe(element);
     return () => observer.disconnect();
-  }, [options?.threshold, options?.rootMargin, options?.root]);
+  }, [threshold, root, rootMargin]);
 
   const setRef = useCallback((node: HTMLDivElement | null) => {
     ref.current = node;
