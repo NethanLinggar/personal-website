@@ -2,7 +2,6 @@
 
 import React, { createContext, useContext, useRef, useState } from "react";
 import ThemeTransition from "@/components/ui/theme-transition";
-import { useIsMobile } from "@/lib/hooks";
 
 type Theme = "light" | "dark";
 
@@ -33,7 +32,6 @@ export default function ThemeContextProvider({
     "rise" | "reveal" | null
   >(null);
   const transitionInProgress = useRef(false);
-  const isMobile = useIsMobile();
 
   const toggleTheme = () => {
     if (transitionInProgress.current) return;
@@ -47,7 +45,7 @@ export default function ThemeContextProvider({
 
     if (
       window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-      isMobile
+      window.matchMedia("(max-width: 767px)").matches
     ) {
       setTheme("light");
       window.localStorage.setItem("theme", "light");

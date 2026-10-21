@@ -59,7 +59,7 @@ const EmbedModal: React.FC<EmbedModalProps> = ({
         transition={{ duration: 0.2 }}
         style={{ pointerEvents: isVisible ? "auto" : "none" }}
       >
-        <div className="rounded-lg backdrop-blur-md">
+        <div className="rounded-lg sm:backdrop-blur-md">
           <DialogPanel className="relative rounded-lg border border-white/10 bg-[#2B2C28]/50 p-2 text-white shadow-lg shadow-black/50">
             <button
               className="absolute right-3 top-2 rounded-lg p-1 text-white/60 transition-colors hover:text-white/90 disabled:cursor-not-allowed disabled:opacity-50"

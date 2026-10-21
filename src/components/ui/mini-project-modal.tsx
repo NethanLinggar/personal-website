@@ -59,7 +59,7 @@ export default function MiniProjectModal({
           }}
           className="flex max-h-[calc(100vh-10rem)] w-full max-w-4xl flex-col pb-5 sm:max-h-[90vh] sm:pb-0 sm:pt-14"
         >
-          <DialogPanel className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#2B2C28]/50 shadow-lg shadow-black/50 backdrop-blur-md">
+          <DialogPanel className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#2B2C28]/70 shadow-lg shadow-black/50 sm:bg-[#2B2C28]/50 sm:backdrop-blur-md">
             {/* Header */}
             <div className="flex flex-shrink-0 items-center justify-between bg-transparent px-6 pb-3 pt-5">
               <DialogTitle className="text-2xl font-semibold text-white">
@@ -100,7 +100,7 @@ export default function MiniProjectModal({
                   src={imageUrl}
                   alt={title}
                   quality={75}
-                  sizes="(max-width: 640px) 80vw, (max-width: 1024px) 50vw, 500px"
+                  sizes="(max-width: 768px) 50vw, 500px"
                   className="mx-auto w-2/3 max-w-2xl sm:w-[45%] sm:pt-2"
                 />
               </div>
